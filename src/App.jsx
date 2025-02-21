@@ -1,11 +1,14 @@
-import './App.css'
+import Header from './layouts/Header'
+import Main from './layouts/Main'
+import Footer from './layouts/Footer'
+import './styles/App.css'
 
-function App() {
+export default function App() {
   return (
     <>
-      <h1>Hello and Welcome @ Key Register App!</h1>
+      <Header />
+      <Main />
+      <Footer />
     </>
   )
 }
-
-export default App
