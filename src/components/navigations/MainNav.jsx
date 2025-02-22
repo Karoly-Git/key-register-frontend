@@ -1,19 +1,13 @@
 import { Link } from 'react-router-dom';
+import styles from '../../styles/MainNav.module.css';
 
 export default function MainNav() {
     return (
-        <nav>
+        <nav className={styles["main-nav"]}>
             <ul>
-                <li>
-                    <Link to='/'>Key-register</Link>
-                </li>
-                <li>
-                    <Link to='/user/register'>Register</Link>
-                </li>
-                <li>
-                    <Link to='/user/login'>Login</Link>
-                </li>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/user/login'>Login</Link></li>
             </ul>
         </nav>
-    )
+    );
 }
