@@ -1,9 +1,15 @@
-export default function TabNav({ tabs, activeTab, setActiveTab }) {
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveTab } from '../../redux/activeTab';
+
+export default function TabNav({ tabs }) {
+    const activeTab = useSelector(state => state.activeTab.tabName);
+    const dispatch = useDispatch();
 
     function handleButtonClick(tabName) {
-        setActiveTab(tabName);
+        dispatch(setActiveTab(tabName));
         console.log(tabName);
-    };
+    }
 
     return (
         <nav className='tab-nav'>
@@ -11,7 +17,7 @@ export default function TabNav({ tabs, activeTab, setActiveTab }) {
                 {tabs.map(tab => (
                     <li key={tab.name}>
                         <button onClick={() => handleButtonClick(tab.name)} className={activeTab === tab.name ? 'tab-btn active-tab-btn' : 'tab-btn'}>
-                            <span><tab.icon className='icon' /></span>
+                            <span>{React.createElement(tab.icon, { className: 'icon' })}</span>
                             <span className='tab-name'>{tab.name}</span>
                         </button>
                     </li>

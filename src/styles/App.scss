@@ -1,3 +1,7 @@
+.active-tab-btn {
+  background-color: red;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -159,7 +163,7 @@ body {
 
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  //min-height: 100vh;
   padding: 0.5rem;
   max-width: 1000px;
 

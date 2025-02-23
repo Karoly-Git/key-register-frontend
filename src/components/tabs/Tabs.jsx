@@ -1,5 +1,4 @@
-import { useState } from 'react';
-
+import { useSelector } from 'react-redux';
 import TabNav from '../navigations/TabNav';
 import Tab from './Tab';
 
@@ -25,14 +24,14 @@ const tabs = [
 ];
 
 export default function Tabs() {
-  const [activeTab, setActiveTab] = useState('keys');
+  const activeTab = useSelector(state => state.activeTab.tabName);
 
   return (
     <div className='tabs'>
-      <TabNav tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <TabNav tabs={tabs} />
 
       {tabs.map((tab, tabIndex) => (
-        <Tab key={tab.name + tabIndex} table={tab.table} />
+        tab.name === activeTab ? <Tab key={tab.name + tabIndex} table={tab.table} /> : null
       ))}
     </div>
   );
