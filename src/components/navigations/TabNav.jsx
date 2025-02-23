@@ -8,7 +8,6 @@ export default function TabNav({ tabs }) {
 
     function handleButtonClick(tabName) {
         dispatch(setActiveTab(tabName));
-        console.log(tabName);
     }
 
     return (
