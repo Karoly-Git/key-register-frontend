@@ -1,0 +1,63 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+    thead {
+        padding: 1rem 0;
+        border-bottom: 3px solid lightgray !important;
+
+        tr {
+            display: flex;
+            padding-right: 0.5rem;
+            align-items: center;
+
+            th {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                text-align: left;
+                padding-left: 0.5rem;
+                user-select: none;
+
+                .icon {
+                    position: relative;
+                    top: 2px;
+                }
+            }
+
+            .th-edit {
+                width: unset;
+                //visibility: hidden;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid lightgray !important;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding-right: 0.5rem;
+
+            &:hover {
+                background-color: lightblue;
+            }
+
+            td {
+                //padding: 0.5rem 0;
+                width: 100%;
+                display: flex;
+                padding-left: 0.5rem;
+                text-transform: capitalize;
+            }
+
+            .td-edit {
+                width: unset;
+            }
+        }
+    }
+}

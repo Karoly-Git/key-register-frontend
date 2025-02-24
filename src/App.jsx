@@ -4,7 +4,10 @@ import Footer from './layouts/Footer';
 import KeyRegister from './components/pages/KeyRegister';
 import UserAuth from './components/pages/UserAuth';
 import PageNotFound from './components/pages/PageNotFound';
+
 import './styles/App.css';
+import './styles/Navigations.css';
+import './styles/Table.css';
 
 export default function App() {
   return (

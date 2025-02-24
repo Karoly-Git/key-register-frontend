@@ -1,0 +1,96 @@
+.main-nav {
+    background-color: black;
+    padding: 1rem;
+
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem; // Space between links
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: background 0.3s ease-in-out;
+
+        &:hover {
+            background: #555; // Slightly lighter on hover
+        }
+    }
+}
+
+.tab-nav {
+    ul {
+        display: flex;
+        padding-top: 0.5rem;
+        list-style: none;
+
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid transparent;
+            border-bottom: 1px solid lightgray;
+            border-radius: 5px 5px 0 0;
+            transition: all 100ms ease-in;
+            color: gray;
+            background-color: lightcyan;
+            user-select: none;
+            font-weight: 600;
+            cursor: pointer;
+
+            &:hover {
+
+                .icon,
+                .tab-name {
+                    color: black;
+                }
+            }
+
+            .icon {
+                margin-right: 0.5rem;
+                display: flex;
+                transition: color 150ms ease-in-out;
+            }
+
+            .tab-name {
+                white-space: nowrap;
+                transition: color 150ms ease-in-out;
+                text-transform: capitalize;
+            }
+        }
+
+        .active-tab-btn {
+            border: 1px solid lightgray;
+            border-bottom-color: transparent !important;
+            background-color: white;
+
+            span {
+                color: blue;
+            }
+
+            &:hover {
+
+                .icon,
+                .tab-name {
+                    color: blue;
+                }
+            }
+        }
+
+        .placeholder-btn {
+            pointer-events: none;
+            width: 100%;
+        }
+    }
+}
