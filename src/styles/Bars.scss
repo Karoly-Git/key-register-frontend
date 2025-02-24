@@ -1,0 +1,82 @@
+.icon-bar {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.25rem;
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+
+        .icon {
+            font-size: 24px;
+            padding: 4px;
+            cursor: pointer;
+            transition: all 150ms ease-in;
+
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+
+            &.dots-icon:hover {
+                background-color: rgb(180, 180, 180);
+                color: white;
+            }
+        }
+
+    }
+
+    .bar-body {
+        padding: 4px;
+    }
+}
+
+.icon-bar-filter {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -105px;
+    position: relative;
+    z-index: 100;
+
+    .bar-body {
+        flex-direction: column;
+        background-color: white;
+        border: 1px solid rgb(180, 180, 180);
+        border-radius: 3px;
+        opacity: 0;
+        transition: all 150ms ease-in-out;
+    }
+
+    .body-on {
+        pointer-events: unset;
+        opacity: 1;
+    }
+}
+
+.icon-bar-edit,
+.icon-bar-add {
+    background-color: unset;
+
+    .bar-body {
+        background-color: white;
+        border: 1px solid rgb(180, 180, 180);
+        border-radius: 3px;
+        pointer-events: none;
+        opacity: 0;
+        transition: all 150ms ease-in-out;
+    }
+
+    .body-on {
+        pointer-events: unset;
+        opacity: 1;
+    }
+}
+
+.icon-bar-add {
+    .bar-body {
+        align-items: center;
+        padding-bottom: 8px;
+    }
+}

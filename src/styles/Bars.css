@@ -1,0 +1,72 @@
+.icon-bar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.25rem;
+}
+.icon-bar div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.icon-bar div .icon {
+  font-size: 24px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 150ms ease-in;
+}
+.icon-bar div .icon:hover {
+  background-color: black;
+  color: white;
+}
+.icon-bar div .icon.dots-icon:hover {
+  background-color: rgb(180, 180, 180);
+  color: white;
+}
+.icon-bar .bar-body {
+  padding: 4px;
+}
+
+.icon-bar-filter {
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: -105px;
+  position: relative;
+  z-index: 100;
+}
+.icon-bar-filter .bar-body {
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 3px;
+  opacity: 0;
+  transition: all 150ms ease-in-out;
+}
+.icon-bar-filter .body-on {
+  pointer-events: unset;
+  opacity: 1;
+}
+
+.icon-bar-edit,
+.icon-bar-add {
+  background-color: unset;
+}
+.icon-bar-edit .bar-body,
+.icon-bar-add .bar-body {
+  background-color: white;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 150ms ease-in-out;
+}
+.icon-bar-edit .body-on,
+.icon-bar-add .body-on {
+  pointer-events: unset;
+  opacity: 1;
+}
+
+.icon-bar-add .bar-body {
+  align-items: center;
+  padding-bottom: 8px;
+}/*# sourceMappingURL=Bars.css.map */

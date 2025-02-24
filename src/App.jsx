@@ -7,7 +7,8 @@ import PageNotFound from './components/pages/PageNotFound';
 
 import './styles/App.css';
 import './styles/Navigations.css';
-import './styles/Table.css';
+import './styles/Tables.css';
+import './styles/Bars.css';
 
 export default function App() {
   return (
