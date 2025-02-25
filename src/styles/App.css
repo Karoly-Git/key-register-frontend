@@ -14,6 +14,9 @@ body {
   min-height: 100vh;
   font-family: sans-serif;
 }
+.App main .tabs {
+  padding: 1rem;
+}
 
 footer {
   background-color: black;

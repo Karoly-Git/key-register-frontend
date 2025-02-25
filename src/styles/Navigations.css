@@ -71,9 +71,4 @@
 .tab-nav ul .active-tab-btn:hover .icon,
 .tab-nav ul .active-tab-btn:hover .tab-name {
   color: blue;
-}
-.tab-nav ul .placeholder-btn {
-  pointer-events: none;
-  width: 100%;
-  background-color: red;
 }/*# sourceMappingURL=Navigations.css.map */
