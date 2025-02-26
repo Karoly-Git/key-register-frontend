@@ -9,11 +9,15 @@ import './styles/App.css';
 import './styles/Navigations.css';
 import './styles/Tables.css';
 import './styles/Bars.css';
+import Modal from './components/modals/Modal';
 
 export default function App() {
   return (
     <BrowserRouter>
       <div className='App'>
+        <Modal modalName='add' modalBody={<p>ADD MODAL BODY</p>} />
+        <Modal modalName='delete' modalBody={<p>DELETE MODAL BODY</p>} />
+        <Modal modalName='edit' modalBody={<p>EDIT MODAL BODY</p>} />
         <Header />
         <Routes>
           <Route path='*' element={<PageNotFound />} />
