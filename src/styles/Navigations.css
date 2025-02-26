@@ -30,7 +30,13 @@
   padding-top: 0.5rem;
   list-style: none;
 }
-.tab-nav ul .tab-btn {
+.tab-nav ul li:last-child {
+  width: 100%;
+}
+.tab-nav ul li:last-child .tab-btn {
+  width: 100%;
+}
+.tab-nav ul li .tab-btn {
   display: flex;
   align-items: center;
   padding: 0.5rem 0.75rem;
@@ -46,29 +52,34 @@
   font-weight: 600;
   cursor: pointer;
 }
-.tab-nav ul .tab-btn:hover .icon,
-.tab-nav ul .tab-btn:hover .tab-name {
+.tab-nav ul li .tab-btn:hover .icon,
+.tab-nav ul li .tab-btn:hover .tab-name {
   color: black;
 }
-.tab-nav ul .tab-btn .icon {
+.tab-nav ul li .tab-btn .icon {
   margin-right: 0.5rem;
   display: flex;
   transition: color 150ms ease-in-out;
 }
-.tab-nav ul .tab-btn .tab-name {
+.tab-nav ul li .tab-btn .tab-name {
   white-space: nowrap;
   transition: color 150ms ease-in-out;
   text-transform: capitalize;
 }
-.tab-nav ul .active-tab-btn {
+.tab-nav ul li .active-tab-btn {
   border: 1px solid lightgray;
   border-bottom-color: transparent !important;
   background-color: white;
 }
-.tab-nav ul .active-tab-btn span {
+.tab-nav ul li .active-tab-btn span {
   color: blue;
 }
-.tab-nav ul .active-tab-btn:hover .icon,
-.tab-nav ul .active-tab-btn:hover .tab-name {
+.tab-nav ul li .active-tab-btn:hover .icon,
+.tab-nav ul li .active-tab-btn:hover .tab-name {
   color: blue;
+}
+.tab-nav ul li .placeholder-btn {
+  background-color: unset;
+  pointer-events: none;
+  height: 33.6px;
 }/*# sourceMappingURL=Navigations.css.map */

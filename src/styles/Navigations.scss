@@ -35,56 +35,73 @@
         padding-top: 0.5rem;
         list-style: none;
 
-        .tab-btn {
-            display: flex;
-            align-items: center;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid transparent;
-            border-bottom: 1px solid lightgray;
-            border-radius: 5px 5px 0 0;
-            transition: all 100ms ease-in;
-            color: gray;
-            background-color: lightcyan;
-            user-select: none;
-            font-weight: 600;
-            cursor: pointer;
+        li {
+            &:last-child {
+                width: 100%;
 
-            &:hover {
-
-                .icon,
-                .tab-name {
-                    color: black;
+                .tab-btn {
+                    width: 100%;
                 }
             }
 
-            .icon {
-                margin-right: 0.5rem;
+            .tab-btn {
                 display: flex;
-                transition: color 150ms ease-in-out;
-            }
+                align-items: center;
+                padding: 0.5rem 0.75rem;
+                border: 1px solid transparent;
+                border-bottom: 1px solid lightgray;
+                border-radius: 5px 5px 0 0;
+                transition: all 100ms ease-in;
+                color: gray;
+                background-color: lightcyan;
+                user-select: none;
+                font-weight: 600;
+                cursor: pointer;
 
-            .tab-name {
-                white-space: nowrap;
-                transition: color 150ms ease-in-out;
-                text-transform: capitalize;
-            }
-        }
+                &:hover {
 
-        .active-tab-btn {
-            border: 1px solid lightgray;
-            border-bottom-color: transparent !important;
-            background-color: white;
+                    .icon,
+                    .tab-name {
+                        color: black;
+                    }
+                }
 
-            span {
-                color: blue;
-            }
+                .icon {
+                    margin-right: 0.5rem;
+                    display: flex;
+                    transition: color 150ms ease-in-out;
+                }
 
-            &:hover {
-
-                .icon,
                 .tab-name {
+                    white-space: nowrap;
+                    transition: color 150ms ease-in-out;
+                    text-transform: capitalize;
+                }
+            }
+
+            .active-tab-btn {
+                border: 1px solid lightgray;
+                border-bottom-color: transparent !important;
+                background-color: white;
+
+                span {
                     color: blue;
                 }
+
+                &:hover {
+
+                    .icon,
+                    .tab-name {
+                        color: blue;
+                    }
+                }
+            }
+
+            .placeholder-btn {
+                background-color: unset;
+                pointer-events: none;
+                height: 33.6px;
+
             }
         }
     }
