@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { MdEdit as EditIcon } from "react-icons/md";
 import { RiDeleteBin6Line as DeleteIcon } from "react-icons/ri";
 import { RiMenuFoldFill as DotsIcon } from "react-icons/ri";
 
@@ -16,6 +17,7 @@ export default function SideBar() {
     return (
         <div className='icon-bar icon-bar-edit' onMouseLeave={handleMouseLeave}>
             <div className={isBodyOn ? 'bar-body body-on' : 'bar-body'}>
+                <EditIcon className='icon edit-icon' onClick={toggleBody} />
                 <DeleteIcon className='icon delete-icon' onClick={toggleBody} />
             </div>
             <div className='bar-tail'>
