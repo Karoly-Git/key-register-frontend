@@ -27,7 +27,6 @@
 
 .tab-nav ul {
   display: flex;
-  padding-top: 0.5rem;
   list-style: none;
 }
 .tab-nav ul li:last-child {
@@ -40,9 +39,7 @@
   display: flex;
   align-items: center;
   padding: 0.5rem 0.75rem;
-  border: 1px solid transparent;
-  border-bottom: 1px solid lightgray;
-  border-radius: 5px 5px 0 0;
+  border: 1px solid lightgray;
   transition: all 100ms ease-in;
   color: gray;
   background-color: lightcyan;
@@ -51,6 +48,8 @@
           user-select: none;
   font-weight: 600;
   cursor: pointer;
+  margin-bottom: -1px;
+  margin-right: -1px;
 }
 .tab-nav ul li .tab-btn:hover .icon,
 .tab-nav ul li .tab-btn:hover .tab-name {
@@ -67,8 +66,8 @@
   text-transform: capitalize;
 }
 .tab-nav ul li .active-tab-btn {
-  border: 1px solid lightgray;
-  border-bottom-color: transparent !important;
+  border-top: 1px solid blue;
+  border-bottom: 1px solid white;
   background-color: white;
 }
 .tab-nav ul li .active-tab-btn span {
@@ -81,5 +80,5 @@
 .tab-nav ul li .placeholder-btn {
   background-color: unset;
   pointer-events: none;
-  height: 33.6px;
+  height: 33px;
 }/*# sourceMappingURL=Navigations.css.map */
