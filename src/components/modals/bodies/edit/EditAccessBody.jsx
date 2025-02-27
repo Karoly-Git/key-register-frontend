@@ -1,16 +1,15 @@
-import React, { useContext, useState, useEffect } from 'react';
+//import { useContext, useState, useEffect } from 'react';
+//import getRecordById from '../../../../actions/getRecordById';
+//import { KeyRegisterContext } from '../../KeyRegister';
 
-import getRecordById from '../../../../actions/getRecordById';
-
-import { KeyRegisterContext } from '../../KeyRegister';
-
-export default function EditLocationBody() {
+export default function EditAccessesBody() {
+    /*
     const { setBodyData, targetId } = useContext(KeyRegisterContext);
     const [inputValue, setInputValue] = useState('');
     const [siteId, setSiteId] = useState(null);
 
     useEffect(() => {
-        getRecordById(targetId, 'locations')
+        getRecordById(targetId, 'accesses')
             .then((result) => {
                 setInputValue(result[0].name);
                 setSiteId(result[0].site_id);
@@ -28,17 +27,18 @@ export default function EditLocationBody() {
             site_id: siteId
         }));
     }
+    */
 
     return (
         <div className='modal-body'>
-            <label htmlFor="inp">Edit the Location name:</label>
+            <label htmlFor="inp">Edit the Access name:</label>
             <input
                 id='inp'
                 required
                 type="text"
                 name="name"
-                value={inputValue || ''}
-                onChange={handleInputChange}
+            //value={inputValue || ''}
+            //onChange={handleInputChange}
             />
         </div >
     );

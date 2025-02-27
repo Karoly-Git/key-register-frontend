@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+//import { useContext } from 'react';
 
-import { KeyRegisterContext } from '../../KeyRegister';
+//import { KeyRegisterContext } from '../../KeyRegister';
 
 export default function AddSiteBody() {
+    /*
     const { bodyData, setBodyData } = useContext(KeyRegisterContext);
 
     const handleBodyChange = (event) => {
@@ -12,6 +13,7 @@ export default function AddSiteBody() {
             [name]: value
         }));
     }
+    */
 
     return (
         <div className='modal-body'>
@@ -22,8 +24,8 @@ export default function AddSiteBody() {
                 type="text"
                 name="name"
                 placeholder='Add a site name'
-                value={bodyData.name || ''}
-                onChange={handleBodyChange}
+            //value={bodyData.name || ''}
+            //onChange={handleBodyChange}
             />
         </div >
     );

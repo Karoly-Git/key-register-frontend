@@ -1,11 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
-
-import getRecordById from '../../../../actions/getRecordById';
-import getRecords from '../../../../actions/getRecords';
-
-import { KeyRegisterContext } from '../../KeyRegister';
+//import { useContext, useState, useEffect } from 'react';
+//import getRecordById from '../../../../actions/getRecordById';
+//import getRecords from '../../../../actions/getRecords';
+//import { KeyRegisterContext } from '../../KeyRegister';
 
 export default function EditKeyBody() {
+    /*
     const { setBodyData, targetId } = useContext(KeyRegisterContext);
     const [accesses, setAccesses] = useState([]);
 
@@ -47,6 +46,7 @@ export default function EditKeyBody() {
             access_id: value,
         }));
     }
+    */
 
     return (
         <div className='modal-body'>
@@ -54,12 +54,17 @@ export default function EditKeyBody() {
 
             <label htmlFor="inp">Choose an Access:</label >
 
-            <select onChange={handleSelectChange} >
-                {accesses.map((access) => (
+            <select
+            //onChange={handleSelectChange} 
+            >
+                {/*accesses.map((access) => (
                     <option key={access.id + 'ac'} value={access.id}>
                         to {access.name} - (aId: {access.id})  - (sId: {access.site_id})
                     </option>
-                ))}
+                ))*/}
+                <option value="">Option-1</option>
+                <option value="">Option-2</option>
+                <option value="">Option-3</option>
             </select>
 
         </div >

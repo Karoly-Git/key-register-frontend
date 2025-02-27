@@ -1,10 +1,25 @@
-import { act, useEffect } from 'react';
+import { useEffect } from 'react';
 import { AiOutlineClose as CloseIcon } from "react-icons/ai";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveModal } from '../../redux/activeModal';
 
-export default function Modal({ modalName, modalBody }) {
+import AddSiteBody from './bodies/add/AddSiteBody';
+import AddAccessBody from './bodies/add/AddAccessBody';
+import AddCabinetBody from './bodies/add/AddCabinetBody';
+import AddLocationBody from './bodies/add/AddLocationBody';
+import AddKeyBody from './bodies/add/AddKeyBody';
+
+import EditSiteBody from './bodies/edit/EditSiteBody';
+import EditAccessBody from './bodies/edit/EditAccessBody';
+import EditCabinetBody from './bodies/edit/EditCabinetBody';
+import EditLocationBody from './bodies/edit/EditLocationBody';
+import EditKeyBody from './bodies/edit/EditKeyBody';
+
+import DeleteBody from './bodies/DeleteBody';
+import SearchBody from './bodies/SearchBody';
+
+export default function Modal({ modalName }) {
     const activeTab = useSelector(state => state.activeTab.tabName);
     const dispatch = useDispatch();
 
@@ -33,6 +48,20 @@ export default function Modal({ modalName, modalBody }) {
             abort: 'Cancel',
             h2: 'Searching for ' + getSingularTabName(activeTab),
         },
+    };
+
+    const bodies = {
+        add_key: <AddKeyBody />,
+        add_access: <AddAccessBody />,
+        add_cabinet: <AddCabinetBody />,
+        add_location: <AddLocationBody />,
+        add_site: <AddSiteBody />,
+
+        edit_key: <EditKeyBody />,
+        edit_access: <EditAccessBody />,
+        edit_cabinet: <EditCabinetBody />,
+        edit_location: <EditLocationBody />,
+        edit_site: <EditSiteBody />,
     };
 
     const handleSubmit = (e) => {
@@ -66,7 +95,9 @@ export default function Modal({ modalName, modalBody }) {
                 </div>
 
                 <div className='modal-body'>
-                    {modalBody}
+                    {modalName === 'delete' && <DeleteBody />}
+                    {modalName === 'search' && <SearchBody />}
+                    {modalName !== 'delete' && modalName !== 'search' && bodies[`${modalName}_${getSingularTabName(activeTab)}`]}
                 </div>
 
                 <div className='modal-footer'>

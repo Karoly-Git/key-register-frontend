@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import getRecords from '../../../../actions/getRecords';
-import getCabinetsWithSiteInfo from '../../../../actions/getCabinetsWithSiteInfo';
-import getHooksByCabinetId from '../../../../actions/getHooksByCabinetId';
-import { KeyRegisterContext } from '../../KeyRegister';
+//import { useContext, useEffect, useState } from 'react';
+//import getRecords from '../../../../actions/getRecords';
+//import getCabinetsWithSiteInfo from '../../../../actions/getCabinetsWithSiteInfo';
+//import getHooksByCabinetId from '../../../../actions/getHooksByCabinetId';
+//import { KeyRegisterContext } from '../../KeyRegister';
 
 export default function AddKeyBody() {
+    /*
     const { bodyData, setBodyData } = useContext(KeyRegisterContext);
     const [sites, setSites] = useState([]);
     const [cabinets, setCabinets] = useState([]);
@@ -197,48 +198,76 @@ export default function AddKeyBody() {
 
         updateBodyData({ hook_number });
     };
+    */
 
     return (
         <div className='modal-body'>
             <label htmlFor="inp">Choose a Site:</label>
-            <select onChange={handleSiteChange} >
-                {sites.map((site, index) => (
+            <select
+            //onChange={handleSiteChange}
+            >
+                {/*sites.map((site, index) => (
                     <option key={index + 'si'} value={site.id}>
                         {site.name} - (sId: {site.id})
                     </option>
-                ))}
+                ))*/}
+                <option value="">Option-1</option>
+                <option value="">Option-2</option>
+                <option value="">Option-3</option>
             </select>
 
 
             <label htmlFor="inp">Choose a Cabinet:</label>
-            <select value={selectedCabinet} onChange={handleCabinetChange} >
-                {cabinets.map((cabinet, index) => (
+            <select
+            //value={selectedCabinet} 
+            // onChange={handleCabinetChange} 
+            >
+                {/*cabinets.map((cabinet, index) => (
                     <option key={index + 'ca'} value={cabinet.id}>
                         {cabinet.name} - (cId: {cabinet.id}) - (sId: {cabinet.site_id})
                     </option>
-                ))}
+                ))*/}
+                <option value="">Option-1</option>
+                <option value="">Option-2</option>
+                <option value="">Option-3</option>
             </select>
 
 
             <label htmlFor="inp">Choose an Access:</label >
-            <select value={selectedAccess} onChange={handleAccessChange} >
-                {accesses.map((access, index) => (
+            <select
+            //value={selectedAccess}
+            //onChange={handleAccessChange}
+            >
+                {/*accesses.map((access, index) => (
                     <option key={index + 'ac'} value={access.id}>
                         to {access.name} - (aId: {access.id})  - (sId: {access.site_id})
                     </option>
-                ))}
+                ))*/}
+                <option value="">Option-1</option>
+                <option value="">Option-2</option>
+                <option value="">Option-3</option>
             </select>
 
             <label htmlFor="inp">Choose a Hook:</label >
-            <select value={selectedHook} onChange={handleHookChange} >
-                {hooks.map((hook, index) => (
+            <select
+            //value={selectedHook}
+            //onChange={handleHookChange}
+            >
+                {/*hooks.map((hook, index) => (
                     <option key={index + 'ho'} value={hook}>
                         Number: {hook}
                     </option>
-                ))}
+                ))*/}
+                <option value="">Option-1</option>
+                <option value="">Option-2</option>
+                <option value="">Option-3</option>
             </select>
 
-            <div onClick={() => console.log(bodyData)}>Show Data Body</div>
+            <div>
+                <button className="btn confirm-btn" onClick={() => console.log('bodyData')}>
+                    Show Data Body
+                </button>
+            </div>
 
         </div >
     );

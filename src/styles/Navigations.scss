@@ -33,10 +33,6 @@
     ul {
         display: flex;
         list-style: none;
-        //border-right: 1px solid lightgray;
-        //border-top: 1px solid lightgray;
-        //border-left: 1px solid lightgray;
-
 
         li {
             &:last-child {
@@ -52,8 +48,6 @@
                 align-items: center;
                 padding: 0.5rem 0.75rem;
                 border: 1px solid lightgray;
-                //border-bottom: 1px solid lightgray;
-                //border-radius: 5px 5px 0 0;
                 transition: all 100ms ease-in;
                 color: gray;
                 background-color: lightcyan;
@@ -87,7 +81,6 @@
             .active-tab-btn {
                 border-top: 1px solid blue;
                 border-bottom: 1px solid white;
-                //border-bottom-color: transparent;
                 background-color: white;
 
                 span {

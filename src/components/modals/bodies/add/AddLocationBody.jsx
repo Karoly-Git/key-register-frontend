@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import getRecords from '../../../../actions/getRecords';
-import { KeyRegisterContext } from '../../KeyRegister';
+//import { useContext, useEffect, useState } from 'react';
+//import getRecords from '../../../../actions/getRecords';
+//import { KeyRegisterContext } from '../../KeyRegister';
 
 export default function AddLocationBody() {
-    const { bodyData, setBodyData } = useContext(KeyRegisterContext);
+    /*const { bodyData, setBodyData } = useContext(KeyRegisterContext);
     const [sites, setSites] = useState([]);
 
     useEffect(() => {
@@ -33,16 +33,24 @@ export default function AddLocationBody() {
             site_id: value
         }));
     };
+    */
 
     return (
         <div className='modal-body'>
             <label htmlFor="">Choose a Site:</label>
-            <select name="site_id" value={bodyData.site_id || ''} onChange={handleSiteSelectChange}>
-                {sites.map((site) => (
+            <select
+                name="site_id"
+            //value={bodyData.site_id || ''}
+            //onChange={handleSiteSelectChange}
+            >
+                {/*sites.map((site) => (
                     <option key={site.id} value={site.id}>
                         {site.name}
                     </option>
-                ))}
+                ))*/}
+                <option value="">Option-1</option>
+                <option value="">Option-2</option>
+                <option value="">Option-3</option>
             </select>
             <label htmlFor="inp">Name the Location:</label >
             <input
@@ -51,8 +59,8 @@ export default function AddLocationBody() {
                 type="text"
                 placeholder='Add a location name'
                 name="name"
-                value={bodyData.name || ''}
-                onChange={handleInputChange}
+            //value={bodyData.name || ''}
+            //onChange={handleInputChange}
             />
         </div >
     );

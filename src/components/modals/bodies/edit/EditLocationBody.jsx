@@ -1,19 +1,18 @@
-import React, { useContext, useState, useEffect } from 'react';
+// import { useContext, useState, useEffect } from 'react';
+// import getRecordById from '../../../../actions/getRecordById';
+// import { KeyRegisterContext } from '../../KeyRegister';
 
-import getRecordById from '../../../../actions/getRecordById';
-
-import { KeyRegisterContext } from '../../KeyRegister';
-
-export default function EditCabinetBody() {
+export default function EditLocationBody() {
+    /*
     const { setBodyData, targetId } = useContext(KeyRegisterContext);
     const [inputValue, setInputValue] = useState('');
-    const [locationId, setLocationId] = useState(null);
+    const [siteId, setSiteId] = useState(null);
 
     useEffect(() => {
-        getRecordById(targetId, 'cabinets')
+        getRecordById(targetId, 'locations')
             .then((result) => {
                 setInputValue(result[0].name);
-                setLocationId(result[0].location_id);
+                setSiteId(result[0].site_id);
             });
     }, []);
 
@@ -25,20 +24,21 @@ export default function EditCabinetBody() {
         setBodyData(prevData => ({
             ...prevData,
             [name]: value,
-            location_id: locationId
+            site_id: siteId
         }));
     }
+    */
 
     return (
         <div className='modal-body'>
-            <label htmlFor="inp">Edit the Cabinet name:</label>
+            <label htmlFor="inp">Edit the Location name:</label>
             <input
                 id='inp'
                 required
                 type="text"
                 name="name"
-                value={inputValue || ''}
-                onChange={handleInputChange}
+            //value={inputValue || ''}
+            //onChange={handleInputChange}
             />
         </div >
     );

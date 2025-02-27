@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import getRecords from '../../../../actions/getRecords';
-import { KeyRegisterContext } from '../../KeyRegister';
+//import { useContext, useEffect, useState } from 'react';
+//import getRecords from '../../../../actions/getRecords';
+//import { KeyRegisterContext } from '../../KeyRegister';
 
 export default function AddCabinetBody() {
+    /*
     const { bodyData, setBodyData } = useContext(KeyRegisterContext);
     const [sites, setSites] = useState([]);
     const [locations, setLocations] = useState([]);
@@ -57,25 +58,40 @@ export default function AddCabinetBody() {
             [name]: value,
         }));
     };
+    */
 
     return (
         <div className='modal-body'>
             <label htmlFor="inp">Choose a Site:</label>
-            <select name="site_id" value={bodyData.site_id || ''} onChange={handleSiteSelectChange} >
-                {sites.map((site) => (
+            <select
+                name="site_id"
+            //value={bodyData.site_id || ''}
+            //onChange={handleSiteSelectChange}
+            >
+                {/*sites.map((site) => (
                     <option key={site.id} value={site.id}>
                         {site.name}
                     </option>
-                ))}
+                ))*/}
+                <option value="">Option-1</option>
+                <option value="">Option-2</option>
+                <option value="">Option-3</option>
             </select>
 
             <label htmlFor="inp">Choose a Cabinet Location:</label >
-            <select name="location_id" value={bodyData.location_id || ''} onChange={handleLocationSelectChange} >
-                {locations.map((location) => (
+            <select
+                name="location_id"
+            //value={bodyData.location_id || ''}
+            //onChange={handleLocationSelectChange}
+            >
+                {/*locations.map((location) => (
                     <option key={location.id} value={location.id}>
                         {location.name}
                     </option>
-                ))}
+                ))*/}
+                <option value="">Option-1</option>
+                <option value="">Option-2</option>
+                <option value="">Option-3</option>
             </select>
 
             <label htmlFor="inp">Name the Cabinet:</label >
@@ -85,8 +101,8 @@ export default function AddCabinetBody() {
                 type="text"
                 placeholder='Add a cabinet name'
                 name="name"
-                value={bodyData.name || ''}
-                onChange={handleInputChange}
+            //value={bodyData.name || ''}
+            //onChange={handleInputChange}
             />
         </div >
     );
