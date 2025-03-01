@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
@@ -17,7 +17,7 @@ export default function App() {
   const activeModal = useSelector(state => state.activeModal.modalName);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className='App'>
         {activeModal === 'add' && <Modal modalName='add' modalBody={<p>ADD MODAL BODY</p>} />}
         {activeModal === 'delete' && <Modal modalName='delete' modalBody={<p>DELETE MODAL BODY</p>} />}
@@ -32,6 +32,6 @@ export default function App() {
         </Routes>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
