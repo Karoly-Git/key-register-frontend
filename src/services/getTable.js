@@ -1,6 +1,6 @@
 const getTable = async (table) => {
     try {
-        const response = await fetch(`http://91.214.112.230:8000/${table}`);
+        const response = await fetch(`https://www.transferstation.co.uk/${table}`);
 
         if (response.ok) {
             const responseJSON = await response.json();
