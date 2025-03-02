@@ -1,7 +1,19 @@
+import { useEffect } from "react";
 import SideBar from "../../bars/SideBar";
+import getTable from "../../../services/getTable";
 
 export default function TableBody({ lable, columns, data }) {
     const trList = new Array(10).fill(null).map(e => 'tr');
+
+    console.log(lable);
+
+    useEffect(() => {
+        getTable(lable)
+            .then(result => {
+                console.log(result);
+            });
+    }, []);
+
 
     return (
         <tbody>
