@@ -1,6 +1,10 @@
+import { apiUrl } from "../../url.config";
+
 const getTable = async (table) => {
+    const URL = apiUrl.isLocalServer ? apiUrl.dev : apiUrl.prod;
+
     try {
-        const response = await fetch(`https://www.transferstation.co.uk/${table}/get/table`);
+        const response = await fetch(`${URL}/${table}/get/table`);
 
         if (response.ok) {
             const responseJSON = await response.json();

@@ -6,13 +6,13 @@ export default function TableBody({ lable, columns, data }) {
     const [objKeys, setObjKeys] = useState([]);
     const [dataObj, setDataObj] = useState([]);
 
-    console.log(lable);
+    // console.log(lable);
 
     useEffect(() => {
         getTable(lable)
             .then(result => {
-                console.log(result);
-                console.log(Object.keys(result[0]));
+                // console.log(result);
+                // console.log(Object.keys(result[0]));
 
                 setDataObj(result);
                 setObjKeys(Object.keys(result[0]));
