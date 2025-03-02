@@ -1,6 +1,6 @@
 const getTable = async (table) => {
     try {
-        const response = await fetch(`https://www.transferstation.co.uk/${table}`);
+        const response = await fetch(`https://www.transferstation.co.uk/${table}/get/table`);
 
         if (response.ok) {
             const responseJSON = await response.json();

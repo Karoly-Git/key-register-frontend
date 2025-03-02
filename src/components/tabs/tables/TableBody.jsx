@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SideBar from "../../bars/SideBar";
 import getTable from "../../../services/getTable";
 
 export default function TableBody({ lable, columns, data }) {
-    const trList = new Array(10).fill(null).map(e => 'tr');
+    const [objKeys, setObjKeys] = useState([]);
+    const [dataObj, setDataObj] = useState([]);
 
     console.log(lable);
 
@@ -11,32 +12,28 @@ export default function TableBody({ lable, columns, data }) {
         getTable(lable)
             .then(result => {
                 console.log(result);
+                console.log(Object.keys(result[0]));
+
+                setDataObj(result);
+                setObjKeys(Object.keys(result[0]));
             });
     }, []);
 
 
     return (
         <tbody>
-            {trList.map((tr, index) => (
-                <tr key={index}>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td className='td-edit'><SideBar /></td>
-                </tr>
-            ))}
-
-            {/*data.map((row) => (
-                <tr key={row.id}>
-                    {columns[lable].map((col, index) => (
-                        <td key={index + 'keystab'}>{row[col]}</td>
-                    ))}
-
-                    <td className='td-edit'></td>
-                </tr>
-            ))*/}
+            {
+                dataObj.map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                        {
+                            objKeys.slice(1).map((objKey, objKeyIndex) => (
+                                <td key={objKeyIndex}>{row[objKey]}</td>
+                            ))
+                        }
+                        <td className='td-edit'><SideBar /></td>
+                    </tr>
+                ))
+            }
         </tbody>
     )
 }
