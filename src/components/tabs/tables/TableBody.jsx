@@ -12,7 +12,7 @@ export default function TableBody({ label }) {
 
 
     // const sortBy = 'site' + '_name';
-    console.log('Sort By:', sortBy, 'Is Asc:', isAscending);
+    //console.log('Sort By:', sortBy, 'Is Asc:', isAscending);
 
     // console.log(label);
 

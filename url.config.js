@@ -1,5 +1,5 @@
 export const apiUrl = {
-    isLocalServer: false,
+    isLocalServer: true,
     dev: 'http://localhost:8000',
     prod: 'https://www.transferstation.co.uk'
 };

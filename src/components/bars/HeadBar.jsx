@@ -1,7 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setSortBy } from '../../redux/sortingData';
-import { setIsAscending } from '../../redux/sortingData';
-
 import { useState } from 'react';
 import { setActiveModal } from '../../redux/activeModal';
 
