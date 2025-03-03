@@ -25,7 +25,7 @@ export default function Tabs() {
       <TabNav tabs={tabs} />
 
       {tabs.map((tab, tabIndex) => (
-        tab.name === activeTab ? <Table key={tab.name + tabIndex} lable={tab.name} columns={tab.columns} /> : null
+        tab.name === activeTab ? <Table key={tab.name + tabIndex} label={tab.name} columns={tab.columns} /> : null
       ))}
     </div>
   );

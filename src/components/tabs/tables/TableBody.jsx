@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import SideBar from "../../bars/SideBar";
 import getTable from "../../../services/getTable";
 
-export default function TableBody({ lable }) {
+export default function TableBody({ label }) {
     const [objKeys, setObjKeys] = useState([]);
     const [dataObj, setDataObj] = useState([]);
 
-    const sortBy = 'site' + '_name';    // to be movet to redux store
-    const isAscending = true;           // to be movet to redux store
+    const sortBy = useSelector(state => state.sortingData.sortBy);
+    const isAscending = useSelector(state => state.sortingData.isAscending);
 
-    console.log(lable);
+
+    // const sortBy = 'site' + '_name';
+    console.log('Sort By:', sortBy, 'Is Asc:', isAscending);
+
+    // console.log(label);
 
     useEffect(() => {
-        getTable(lable)
+        getTable(label)
             .then(result => {
-                console.log(result);
+                // console.log(result);
 
                 if (result.length > 0) {
                     setObjKeys(Object.keys(result[0]));
@@ -34,7 +39,7 @@ export default function TableBody({ lable }) {
                     setDataObj(sortedData);
                 }
             });
-    }, [lable, sortBy, isAscending]); // Depend on lable to refetch if it changes
+    }, [label, sortBy, isAscending]);
 
     return (
         <tbody>

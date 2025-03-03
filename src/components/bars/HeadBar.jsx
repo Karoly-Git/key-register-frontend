@@ -1,12 +1,16 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { setSortBy } from '../../redux/sortingData';
+import { setIsAscending } from '../../redux/sortingData';
+
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { setActiveModal } from '../../redux/activeModal';
 
 import { RiFunctionLine as DotsIcon } from "react-icons/ri";
 import { BsSearch as SearchIcon } from "react-icons/bs";
 import { BsPlusLg as PlusIcon } from "react-icons/bs";
 
-export default function HeadBar() {
+export default function HeadBar({ label, colName }) {
+
     const [isBodyOn, setIsBodyOn] = useState(false);
     const dispatch = useDispatch();
 
