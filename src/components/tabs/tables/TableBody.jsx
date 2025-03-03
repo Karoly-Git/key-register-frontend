@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import SideBar from "../../bars/SideBar";
 import getTable from "../../../services/getTable";
 
@@ -7,41 +7,26 @@ export default function TableBody({ label }) {
     const [objKeys, setObjKeys] = useState([]);
     const [dataObj, setDataObj] = useState([]);
 
-    const tablesSortedBy = useSelector(state => state.sortingData.tablesSortedBy);
-    console.log(tablesSortedBy);
-    const sortBy = tablesSortedBy[label];
-    const isAscending = useSelector(state => state.sortingData.isAscending);
-
-    // const sortBy = 'site' + '_name';
-    console.log('Sort By:', sortBy, 'Is Asc:', isAscending);
-
-    // console.log('label:', label);
+    const tableState = useSelector(state => state.sortingData.tableStates[label]) || {};
+    const { sortBy, isAsc } = tableState;
 
     useEffect(() => {
         getTable(label)
             .then(result => {
-                // console.log(result);
-
                 if (result.length > 0) {
                     setObjKeys(Object.keys(result[0]));
 
-
                     const sortedData = [...result].sort((a, b) => {
-                        if (isAscending) {
-                            if (a[sortBy] < b[sortBy]) return -1;
-                            if (a[sortBy] > b[sortBy]) return 1;
-                            return 0;
-                        } else {
-                            if (a[sortBy] > b[sortBy]) return -1;
-                            if (a[sortBy] < b[sortBy]) return 1;
-                            return 0;
-                        }
+                        if (!sortBy) return 0; // Prevent sorting if sortBy is undefined
+                        return isAsc
+                            ? a[sortBy]?.localeCompare(b[sortBy]) || 0
+                            : b[sortBy]?.localeCompare(a[sortBy]) || 0;
                     });
 
                     setDataObj(sortedData);
                 }
             });
-    }, [isAscending]);
+    }, [label, sortBy, isAsc]);
 
     return (
         <tbody>

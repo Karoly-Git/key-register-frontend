@@ -3,24 +3,41 @@ import { createSlice } from "@reduxjs/toolkit";
 export const sortingDataSlice = createSlice({
     name: "sortingData",
     initialState: {
-        isAscending: true,
-        tablesSortedBy: {
-            keys: 'access_name',
-            accesses: 'access_name',
-            cabinets: 'cabinet_name',
-            locations: 'location_name',
-            sites: 'site_name'
+        tableStates: {
+            keys: {
+                sortBy: 'access_name',
+                isAsc: true,
+            },
+            accesses: {
+                sortBy: 'access_name',
+                isAsc: true,
+            },
+            cabinets: {
+                sortBy: 'cabinet_name',
+                isAsc: true,
+            },
+            locations: {
+                sortBy: 'location_name',
+                isAsc: true,
+            },
+            sites: {
+                sortBy: 'site_name',
+                isAsc: true,
+            }
         }
     },
     reducers: {
-        setIsAscending: (state, action) => {
-            state.isAscending = action.payload;
+        setTableStates: (state, action) => {
+            state.tableStates = action.payload;
         },
-        setTablesSortedBy: (state, action) => {
-            state.tablesSortedBy = action.payload;
+        setTableSorting: (state, action) => {
+            const { tableName, sortBy, isAsc } = action.payload;
+            //if (state.tableStates[tableName]) {
+            state.tableStates[tableName] = { sortBy, isAsc };
+            //}
         },
     }
 });
 
-export const { setIsAscending, setTablesSortedBy } = sortingDataSlice.actions;
+export const { setTableStates, setTableSorting } = sortingDataSlice.actions;
 export default sortingDataSlice.reducer;
