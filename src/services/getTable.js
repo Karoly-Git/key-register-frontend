@@ -1,4 +1,4 @@
-import { apiUrl } from "../../url.config";
+import { apiUrl } from "../../app.config";
 
 const getTable = async (table) => {
     const URL = apiUrl.isLocalServer ? apiUrl.dev : apiUrl.prod;

@@ -9,7 +9,7 @@ import { IoKeyOutline as KeyIcon } from 'react-icons/io5';
 import Table from './tables/Table';
 
 const tabs = [
-  { name: 'keys', icon: KeyIcon, columns: ['Hook', 'Access', 'Cabinet', 'Location', 'Site'] },
+  { name: 'keys', icon: KeyIcon, columns: ['Access', 'Hook', 'Cabinet', 'Location', 'Site'] },
   { name: 'accesses', icon: AccessPointIcon, columns: ['Access', 'Site'] },
   { name: 'cabinets', icon: CabinetIcon, columns: ['Cabinet', 'Location', 'Site'] },
   { name: 'locations', icon: LocationIcon, columns: ['Location', 'Site'] },

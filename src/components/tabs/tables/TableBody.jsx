@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SideBar from "../../bars/SideBar";
 import getTable from "../../../services/getTable";
 
@@ -7,14 +7,15 @@ export default function TableBody({ label }) {
     const [objKeys, setObjKeys] = useState([]);
     const [dataObj, setDataObj] = useState([]);
 
-    const sortBy = useSelector(state => state.sortingData.sortBy);
+    const tablesSortedBy = useSelector(state => state.sortingData.tablesSortedBy);
+    console.log(tablesSortedBy);
+    const sortBy = tablesSortedBy[label];
     const isAscending = useSelector(state => state.sortingData.isAscending);
 
-
     // const sortBy = 'site' + '_name';
-    //console.log('Sort By:', sortBy, 'Is Asc:', isAscending);
+    console.log('Sort By:', sortBy, 'Is Asc:', isAscending);
 
-    // console.log(label);
+    // console.log('label:', label);
 
     useEffect(() => {
         getTable(label)
@@ -23,6 +24,7 @@ export default function TableBody({ label }) {
 
                 if (result.length > 0) {
                     setObjKeys(Object.keys(result[0]));
+
 
                     const sortedData = [...result].sort((a, b) => {
                         if (isAscending) {
@@ -39,7 +41,7 @@ export default function TableBody({ label }) {
                     setDataObj(sortedData);
                 }
             });
-    }, [label, sortBy, isAscending]);
+    }, [isAscending]);
 
     return (
         <tbody>
