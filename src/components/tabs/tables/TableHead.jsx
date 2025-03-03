@@ -2,14 +2,14 @@ import React from 'react';
 import FilterBar from '../../bars/FilterBar';
 import HeadBar from '../../bars/HeadBar';
 
-export default function TableHead({ columns }) {
+export default function TableHead({ lable, columns }) {
     return (
         <thead>
             {<tr>
-                {columns.map((lable, lableIndex) => (
+                {columns.map((colName, lableIndex) => (
                     <th key={lableIndex}>
-                        {lable} &nbsp;
-                        <FilterBar />
+                        {colName} &nbsp;
+                        <FilterBar lable={lable} colName={colName} />
                     </th>
                 ))}
 

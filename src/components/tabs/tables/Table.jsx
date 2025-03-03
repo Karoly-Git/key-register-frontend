@@ -4,7 +4,7 @@ import TableBody from "./TableBody";
 export default function Table({ lable, columns }) {
     return (
         <table className="table">
-            <TableHead columns={columns} />
+            <TableHead lable={lable} columns={columns} />
             <TableBody lable={lable} />
         </table>
     )
