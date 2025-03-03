@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setTableSorting } from '../../redux/sortingData';
 
 import { IoCaretDownOutline as DotsIcon } from "react-icons/io5";
@@ -21,6 +21,7 @@ export default function FilterBar({ label, colName }) {
     const handleSort = (isAscending) => {
         const sortBy = colName === 'Hook' ? 'hook_number' : `${colName.toLowerCase()}_name`;
         dispatch(setTableSorting({ tableName: label, sortBy, isAsc: isAscending }));
+        // console.log({ tableName: label, sortBy, isAsc: isAscending });
         toggleBody();
     };
 

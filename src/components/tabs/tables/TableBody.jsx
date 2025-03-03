@@ -17,10 +17,12 @@ export default function TableBody({ label }) {
                     setObjKeys(Object.keys(result[0]));
 
                     const sortedData = [...result].sort((a, b) => {
-                        if (!sortBy) return 0; // Prevent sorting if sortBy is undefined
-                        return isAsc
-                            ? a[sortBy]?.localeCompare(b[sortBy]) || 0
-                            : b[sortBy]?.localeCompare(a[sortBy]) || 0;
+                        if (!sortBy) return 0;
+
+                        const valueA = String(a[sortBy] ?? "").toLowerCase();
+                        const valueB = String(b[sortBy] ?? "").toLowerCase();
+
+                        return isAsc ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
                     });
 
                     setDataObj(sortedData);
