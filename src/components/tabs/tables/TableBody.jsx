@@ -3,15 +3,15 @@ import { useSelector } from "react-redux";
 import SideBar from "../../bars/SideBar";
 import getTable from "../../../services/getTable";
 
-export default function TableBody({ label }) {
+export default function TableBody({ tabName }) {
     const [objKeys, setObjKeys] = useState([]);
     const [dataObj, setDataObj] = useState([]);
 
-    const tableState = useSelector(state => state.sortingData.tableStates[label]) || {};
+    const tableState = useSelector(state => state.sortingData.tableStates[tabName]) || {};
     const { sortBy, isAsc } = tableState;
 
     useEffect(() => {
-        getTable(label)
+        getTable(tabName)
             .then(result => {
                 if (result.length > 0) {
                     setObjKeys(Object.keys(result[0]));
@@ -28,7 +28,7 @@ export default function TableBody({ label }) {
                     setDataObj(sortedData);
                 }
             });
-    }, [label, sortBy, isAsc]);
+    }, [tabName, sortBy, isAsc]);
 
     return (
         <tbody>

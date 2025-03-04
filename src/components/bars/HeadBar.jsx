@@ -6,7 +6,7 @@ import { RiFunctionLine as DotsIcon } from "react-icons/ri";
 import { BsSearch as SearchIcon } from "react-icons/bs";
 import { BsPlusLg as PlusIcon } from "react-icons/bs";
 
-export default function HeadBar({ label, colName }) {
+export default function HeadBar() {
 
     const [isBodyOn, setIsBodyOn] = useState(false);
     const dispatch = useDispatch();

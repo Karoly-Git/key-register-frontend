@@ -23,6 +23,9 @@
   background-color: rgb(180, 180, 180);
   color: white;
 }
+.icon-bar div .indicator-icon {
+  color: gray;
+}
 .icon-bar .bar-body {
   padding: 4px;
 }

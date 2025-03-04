@@ -1,11 +1,11 @@
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
 
-export default function Table({ label, columns }) {
+export default function Table({ tabName, columns }) {
     return (
         <table className="table">
-            <TableHead label={label} columns={columns} />
-            <TableBody label={label} />
+            <TableHead tabName={tabName} columns={columns} />
+            <TableBody tabName={tabName} />
         </table>
     )
 }
