@@ -22,7 +22,6 @@ export const appSlice = createSlice({
     reducers: {
         setActiveTab: (state, action) => {
             state.activeTab.name = action.payload;
-            console.log(state.activeTab.name);
         },
         setActiveTableData: (state, action) => {
             state.activeTab.tableData = action.payload;
@@ -37,11 +36,9 @@ export const appSlice = createSlice({
         },
         setActiveModal: (state, action) => {
             state.modal.activeModal = action.payload;
-            console.log('Active modal:', state.modal.activeModal);
         },
         setModalData: (state, action) => {
             state.modal.modalData = action.payload;
-            console.log(state.modal.modalData);
         }
     }
 });

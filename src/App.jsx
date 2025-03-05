@@ -15,7 +15,6 @@ import './styles/Modals.css';
 
 export default function App() {
   const activeModal = useSelector(state => state.app.modal.activeModal);
-  console.log(activeModal);
 
   return (
     <BrowserRouter>

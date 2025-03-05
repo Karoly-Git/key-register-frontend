@@ -1,53 +1,45 @@
-// Import React hooks and Redux functions
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-
-// Import custom components
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveTableData } from "../../../redux/appSlice";
 import SideBar from "../../bars/SideBar";
-
-// Import the service function for fetching table data
 import getTable from "../../../services/getTable";
 
 export default function TableBody({ tabName }) {
-    const [objKeys, setObjKeys] = useState([]); // Store the object keys
-    const [dataObj, setDataObj] = useState([]); // Store the table data
+    const dispatch = useDispatch();
+    const tableData = useSelector(state => state.app.activeTab.tableData) || [];
 
-    // Get the table state from Redux
+    const [objKeys, setObjKeys] = useState([]);
+
+    // Get sorting state from Redux
     const tableState = useSelector(state => state.app.tableStates[tabName]) || {};
-    const { sortBy, isAsc } = tableState; // Destructure sorting state
+    const { sortBy, isAsc } = tableState;
 
     useEffect(() => {
-        // Fetch the table data when tabName, sortBy, or isAsc changes
-        getTable(tabName).then(result => {
-            if (result.length > 0) {
-                // Get object keys from the first record (assuming all records have the same structure)
-                setObjKeys(Object.keys(result[0]));
+        // Fetch table data and store it in Redux
+        getTable(tabName)
+            .then(result => {
+                if (result.length > 0) {
+                    dispatch(setActiveTableData(result));
+                    setObjKeys(Object.keys(result[0]));
+                }
+            });
+    }, [tabName, dispatch]);
 
-                // Sort the data based on the sorting parameters
-                const sortedData = [...result].sort((a, b) => {
-                    if (!sortBy) return 0; // If no sortBy, return 0 (no sorting)
-
-                    const valueA = String(a[sortBy] ?? "").toLowerCase();
-                    const valueB = String(b[sortBy] ?? "").toLowerCase();
-
-                    return isAsc ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
-                });
-
-                setDataObj(sortedData); // Update the state with the sorted data
-            }
-        });
-    }, [tabName, sortBy, isAsc]); // Dependency array ensures it re-runs when these values change
+    // Sort data if sorting is enabled
+    const sortedData = [...tableData].sort((a, b) => {
+        if (!sortBy) return 0;
+        const valueA = String(a[sortBy] ?? "").toLowerCase();
+        const valueB = String(b[sortBy] ?? "").toLowerCase();
+        return isAsc ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+    });
 
     return (
         <tbody>
-            {/* Map over the sorted data and render each record */}
-            {dataObj.map((record, recordIndex) => (
+            {sortedData.map((record, recordIndex) => (
                 <tr key={record.id || `record-${recordIndex}`}>
-                    {/* Map through object keys (skip the first key) to render the table data */}
                     {objKeys.slice(1).map(objKey => (
                         <td key={objKey}>{record[objKey] ?? "N/A"}</td>
                     ))}
-                    {/* Render the SideBar component for each record */}
                     <td className="td-edit"><SideBar record={record} /></td>
                 </tr>
             ))}

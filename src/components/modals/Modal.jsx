@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveModal, setModalData } from '../../redux/appSlice';
+import { setActiveModal, setModalData, setActiveTableData } from '../../redux/appSlice';
+
+import getTable from '../../services/getTable';
 import addRecord from '../../services/addRecord';
+import deleteRecordById from '../../services/deleteRecordById';
 
 import { AiOutlineClose as CloseIcon } from "react-icons/ai";
 
@@ -25,33 +28,17 @@ export default function Modal() {
     const activeModal = useSelector(state => state.app.modal.activeModal);
     const activeTab = useSelector(state => state.app.activeTab.name);
     const singularTabName = getSingularTabName(activeTab);
-    const modalData = useSelector(state => state.app.modalData);
+    const modalData = useSelector(state => state.app.modal.modalData);
 
     function getSingularTabName(activeTab) {
         return activeTab === 'accesses' ? 'access' : activeTab.slice(0, -1);
     }
 
     const texts = {
-        add: {
-            confirm: 'Save',
-            abort: 'Cancel',
-            h2: 'Adding ' + singularTabName,
-        },
-        delete: {
-            confirm: 'Yes',
-            abort: 'Cancel',
-            h2: 'Deleting ' + singularTabName,
-        },
-        edit: {
-            confirm: 'Update',
-            abort: 'Cancel',
-            h2: 'Editing ' + singularTabName,
-        },
-        search: {
-            confirm: 'Search',
-            abort: 'Cancel',
-            h2: 'Searching for ' + singularTabName,
-        },
+        add: { confirm: 'Save', abort: 'Cancel', h2: 'Adding ' + singularTabName },
+        delete: { confirm: 'Yes', abort: 'Cancel', h2: 'Deleting ' + singularTabName },
+        edit: { confirm: 'Update', abort: 'Cancel', h2: 'Editing ' + singularTabName },
+        search: { confirm: 'Search', abort: 'Cancel', h2: 'Searching for ' + singularTabName },
     };
 
     const bodies = {
@@ -68,12 +55,25 @@ export default function Modal() {
         edit_site: <EditSiteBody />,
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (modalData) {
             console.log(modalData);
-            addRecord(activeTab, modalData);
+
+            if (activeModal === 'add') {
+                await addRecord(activeTab, modalData); // Ensure record is added first
+            } else if (activeModal === 'delete') {
+                await deleteRecordById(activeTab, modalData.id); // Ensure deletion completes
+            }
+
+            // Fetch updated table data after modification
+            getTable(activeTab)
+                .then(result => {
+                    dispatch(setActiveTableData(result));
+                });
         }
+
         exitModal();
     };
 
