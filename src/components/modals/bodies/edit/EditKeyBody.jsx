@@ -49,7 +49,7 @@ export default function EditKeyBody() {
     */
 
     return (
-        <div className='modal-body'>
+        <>
             <label htmlFor="inp">Edit the Location name:</label>
 
             <label htmlFor="inp">Choose an Access:</label >
@@ -67,6 +67,6 @@ export default function EditKeyBody() {
                 <option value="">Option-3</option>
             </select>
 
-        </div >
+        </>
     );
 }

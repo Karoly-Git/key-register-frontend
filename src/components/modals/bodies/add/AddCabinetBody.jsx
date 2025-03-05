@@ -61,7 +61,7 @@ export default function AddCabinetBody() {
     */
 
     return (
-        <div className='modal-body'>
+        <>
             <label htmlFor="inp">Choose a Site:</label>
             <select
                 name="site_id"
@@ -104,6 +104,6 @@ export default function AddCabinetBody() {
             //value={bodyData.name || ''}
             //onChange={handleInputChange}
             />
-        </div >
+        </>
     );
 }

@@ -27,9 +27,9 @@ export default function DeleteBody() {
     */
 
     return (
-        <div className='modal-body'>
+        <>
             <p>Are you sure you want to remove <strong className='tab-name'>{'entityName'}</strong>?</p>
-        </div >
+        </>
     );
 }
 

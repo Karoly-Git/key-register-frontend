@@ -27,9 +27,9 @@ export default function SearchBody() {
     */
 
     return (
-        <div className='modal-body'>
+        <>
             <input type="text" placeholder="Search" />
-        </div >
+        </>
     );
 }
 

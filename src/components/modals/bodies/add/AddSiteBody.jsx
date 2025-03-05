@@ -1,32 +1,27 @@
-//import { useContext } from 'react';
-
-//import { KeyRegisterContext } from '../../KeyRegister';
+import { useState } from "react";
 
 export default function AddSiteBody() {
-    /*
-    const { bodyData, setBodyData } = useContext(KeyRegisterContext);
+    const [siteName, setSiteName] = useState({});
 
-    const handleBodyChange = (event) => {
-        const { name, value } = event.target;
-        setBodyData(prevData => ({
-            ...prevData,
-            [name]: value
-        }));
-    }
-    */
+    const handleInputChange = (event) => {
+        const { value } = event.target;
+
+        setSiteName(value);
+        console.log(value);
+    };
 
     return (
-        <div className='modal-body'>
-            <label htmlFor="inp">Name the Site:</label>
+        <>
+            <label htmlFor="inp">Site Name:</label>
             <input
                 id='inp'
                 required
                 type="text"
-                name="name"
-                placeholder='Add a site name'
-            //value={bodyData.name || ''}
-            //onChange={handleBodyChange}
+                name="site-name"
+                placeholder='Enter Site Name'
+                value={siteName}
+                onChange={handleInputChange}
             />
-        </div >
+        </>
     );
 }

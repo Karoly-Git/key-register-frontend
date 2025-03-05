@@ -30,7 +30,7 @@ export default function EditLocationBody() {
     */
 
     return (
-        <div className='modal-body'>
+        <>
             <label htmlFor="inp">Edit the Location name:</label>
             <input
                 id='inp'
@@ -40,6 +40,6 @@ export default function EditLocationBody() {
             //value={inputValue || ''}
             //onChange={handleInputChange}
             />
-        </div >
+        </>
     );
 }

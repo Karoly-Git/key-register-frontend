@@ -201,7 +201,7 @@ export default function AddKeyBody() {
     */
 
     return (
-        <div className='modal-body'>
+        <>
             <label htmlFor="inp">Choose a Site:</label>
             <select
             //onChange={handleSiteChange}
@@ -269,6 +269,6 @@ export default function AddKeyBody() {
                 </button>
             </div>
 
-        </div >
+        </>
     );
 }

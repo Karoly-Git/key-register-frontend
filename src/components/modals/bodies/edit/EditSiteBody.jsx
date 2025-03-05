@@ -27,7 +27,7 @@ export default function EditSiteBody() {
     */
 
     return (
-        <div className='modal-body'>
+        <>
             <label htmlFor="inp">Edit the Site name:</label>
             <input
                 id='inp'
@@ -37,6 +37,6 @@ export default function EditSiteBody() {
             //value={inputValue || ''}
             //onChange={handleInputChange}
             />
-        </div >
+        </>
     );
 }

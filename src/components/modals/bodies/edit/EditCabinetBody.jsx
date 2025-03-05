@@ -30,7 +30,7 @@ export default function EditCabinetBody() {
     */
 
     return (
-        <div className='modal-body'>
+        <>
             <label htmlFor="inp">Edit the Cabinet name:</label>
             <input
                 id='inp'
@@ -40,6 +40,6 @@ export default function EditCabinetBody() {
             //value={inputValue || ''}
             //onChange={handleInputChange}
             />
-        </div >
+        </>
     );
 }

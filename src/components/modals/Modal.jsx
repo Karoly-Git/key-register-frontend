@@ -30,7 +30,7 @@ export default function Modal({ modalName }) {
     const texts = {
         add: {
             confirm: 'Save',    // was save
-            abort: 'Cancel',     // was cancel
+            abort: 'Cancel',    // was cancel
             h2: 'Adding ' + getSingularTabName(activeTab)
         },
         delete: {

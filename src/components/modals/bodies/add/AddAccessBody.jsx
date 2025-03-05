@@ -37,7 +37,7 @@ export default function AddAccessBody() {
     */
 
     return (
-        <div className='modal-body'>
+        <>
             <label htmlFor="">Choose a Site:</label>
             <select
                 name="site_id"
@@ -64,6 +64,6 @@ export default function AddAccessBody() {
             //value={bodyData.name || ''}
             //onChange={handleInputChange}
             />
-        </div >
+        </>
     );
 }

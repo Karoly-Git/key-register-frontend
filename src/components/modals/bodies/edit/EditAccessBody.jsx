@@ -30,7 +30,7 @@ export default function EditAccessesBody() {
     */
 
     return (
-        <div className='modal-body'>
+        <>
             <label htmlFor="inp">Edit the Access name:</label>
             <input
                 id='inp'
@@ -40,6 +40,6 @@ export default function EditAccessesBody() {
             //value={inputValue || ''}
             //onChange={handleInputChange}
             />
-        </div >
+        </>
     );
 }
