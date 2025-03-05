@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { setModalData } from "../../../../redux/modalSlice";
+import { setModalData } from "../../../../redux/appSlice";
 
 export default function AddSiteBody() {
     const dispatch = useDispatch();

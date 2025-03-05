@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveModal, setModalData } from '../../redux/modalSlice';
+import { setActiveModal, setModalData } from '../../redux/appSlice';
 import addRecord from '../../services/addRecord';
 
 import { AiOutlineClose as CloseIcon } from "react-icons/ai";
@@ -20,11 +20,12 @@ import EditKeyBody from './bodies/edit/EditKeyBody';
 import DeleteBody from './bodies/delete/DeleteBody';
 import SearchBody from './bodies/search/SearchBody';
 
-export default function Modal({ activeModal }) {
+export default function Modal() {
     const dispatch = useDispatch();
-    const activeTab = useSelector(state => state.tabSlice.activeTabName);
+    const activeModal = useSelector(state => state.app.modal.activeModal);
+    const activeTab = useSelector(state => state.app.activeTab.name);
     const singularTabName = getSingularTabName(activeTab);
-    const modalData = useSelector(state => state.modalSlice.modalData); // ✅ Move useSelector here
+    const modalData = useSelector(state => state.app.modalData);
 
     function getSingularTabName(activeTab) {
         return activeTab === 'accesses' ? 'access' : activeTab.slice(0, -1);
