@@ -59,8 +59,6 @@ export default function Modal() {
         e.preventDefault();
 
         if (modalData) {
-            console.log(modalData);
-
             if (activeModal === 'add') {
                 await addRecord(activeTab, modalData); // Ensure record is added first
             } else if (activeModal === 'delete') {

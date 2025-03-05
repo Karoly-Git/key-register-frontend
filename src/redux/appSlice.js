@@ -25,7 +25,6 @@ export const appSlice = createSlice({
         },
         setActiveTableData: (state, action) => {
             state.activeTab.tableData = action.payload;
-            console.log(state.activeTab.tableData);
         },
         setTableStates: (state, action) => {
             state.tableStates = action.payload;

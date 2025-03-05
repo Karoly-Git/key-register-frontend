@@ -1,6 +1,10 @@
+import { apiUrl } from "../../app.config";
+
 const deleteRecordById = async (table, id) => {
+    const URL = apiUrl.isLocalServer ? apiUrl.dev : apiUrl.prod;
+
     try {
-        const response = await fetch(`http://localhost:8000/${table}/delete/${id}`, {
+        const response = await fetch(`${URL}/${table}/delete/${id}`, {
             method: "DELETE"
         });
 

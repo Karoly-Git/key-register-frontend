@@ -1,6 +1,10 @@
+import { apiUrl } from "../../app.config";
+
 const addRecord = async (table, newRecord) => {
+    const URL = apiUrl.isLocalServer ? apiUrl.dev : apiUrl.prod;
+
     try {
-        const response = await fetch(`http://localhost:8000/${table}/add`, {
+        const response = await fetch(`${URL}/${table}/add`, {
             method: "POST",
             body: JSON.stringify({
                 ...newRecord,
