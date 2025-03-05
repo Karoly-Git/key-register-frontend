@@ -14,15 +14,15 @@ import './styles/Bars.css';
 import './styles/Modals.css';
 
 export default function App() {
-  const modalSlice = useSelector(state => state.modalSlice.modalName);
+  const modalSlice = useSelector(state => state.modalSlice.activeModal);
 
   return (
     <BrowserRouter>
       <div className='App'>
-        {modalSlice === 'add' && <Modal modalName='add' modalBody={<p>ADD MODAL BODY</p>} />}
-        {modalSlice === 'delete' && <Modal modalName='delete' modalBody={<p>DELETE MODAL BODY</p>} />}
-        {modalSlice === 'edit' && <Modal modalName='edit' modalBody={<p>EDIT MODAL BODY</p>} />}
-        {modalSlice === 'search' && <Modal modalName='search' modalBody={<p>SEARCH MODAL BODY</p>} />}
+        {modalSlice === 'add' && <Modal activeModal='add' modalBody={<p>ADD MODAL BODY</p>} />}
+        {modalSlice === 'delete' && <Modal activeModal='delete' modalBody={<p>DELETE MODAL BODY</p>} />}
+        {modalSlice === 'edit' && <Modal activeModal='edit' modalBody={<p>EDIT MODAL BODY</p>} />}
+        {modalSlice === 'search' && <Modal activeModal='search' modalBody={<p>SEARCH MODAL BODY</p>} />}
         <Header />
         <Routes>
           <Route path='*' element={<PageNotFound />} />

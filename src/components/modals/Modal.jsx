@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { AiOutlineClose as CloseIcon } from "react-icons/ai";
-
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveModal } from '../../redux/modalSlice';
+import { setActiveModal, setModalData } from '../../redux/modalSlice';
+import addRecord from '../../services/addRecord';
+
+import { AiOutlineClose as CloseIcon } from "react-icons/ai";
 
 import AddSiteBody from './bodies/add/AddSiteBody';
 import AddAccessBody from './bodies/add/AddAccessBody';
@@ -19,9 +20,11 @@ import EditKeyBody from './bodies/edit/EditKeyBody';
 import DeleteBody from './bodies/delete/DeleteBody';
 import SearchBody from './bodies/search/SearchBody';
 
-export default function Modal({ modalName }) {
-    const activeTab = useSelector(state => state.tabSlice.activeTabName);
+export default function Modal({ activeModal }) {
     const dispatch = useDispatch();
+    const activeTab = useSelector(state => state.tabSlice.activeTabName);
+    const singularTabName = getSingularTabName(activeTab);
+    const modalData = useSelector(state => state.modalSlice.modalData); // ✅ Move useSelector here
 
     function getSingularTabName(activeTab) {
         return activeTab === 'accesses' ? 'access' : activeTab.slice(0, -1);
@@ -29,24 +32,24 @@ export default function Modal({ modalName }) {
 
     const texts = {
         add: {
-            confirm: 'Save',    // was save
-            abort: 'Cancel',    // was cancel
-            h2: 'Adding ' + getSingularTabName(activeTab)
+            confirm: 'Save',
+            abort: 'Cancel',
+            h2: 'Adding ' + singularTabName,
         },
         delete: {
             confirm: 'Yes',
             abort: 'Cancel',
-            h2: 'Deleting ' + getSingularTabName(activeTab),
+            h2: 'Deleting ' + singularTabName,
         },
         edit: {
             confirm: 'Update',
             abort: 'Cancel',
-            h2: 'Editing ' + getSingularTabName(activeTab),
+            h2: 'Editing ' + singularTabName,
         },
         search: {
             confirm: 'Search',
             abort: 'Cancel',
-            h2: 'Searching for ' + getSingularTabName(activeTab),
+            h2: 'Searching for ' + singularTabName,
         },
     };
 
@@ -66,17 +69,23 @@ export default function Modal({ modalName }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-    }
+        if (modalData) {
+            console.log(modalData);
+            addRecord(activeTab, modalData);
+        }
+        exitModal();
+    };
 
     const exitModal = () => {
+        dispatch(setModalData(null));
         dispatch(setActiveModal(null));
-    }
+    };
 
     const handleKeyDown = (event) => {
         if (event.key === "Escape") {
-            dispatch(setActiveModal(null));
+            exitModal();
         }
-    }
+    };
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyDown);
@@ -86,23 +95,23 @@ export default function Modal({ modalName }) {
     }, []);
 
     return (
-        <form className={`modal ${modalName}-modal`} onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
+        <form className={`modal ${activeModal}-modal`} onSubmit={handleSubmit}>
             <div className='modal-container'>
 
                 <div className='modal-head'>
-                    <h2>{texts[modalName].h2}</h2>
+                    <h2>{texts[activeModal].h2}</h2>
                     <CloseIcon className='icon' onClick={exitModal} />
                 </div>
 
                 <div className='modal-body'>
-                    {modalName === 'delete' && <DeleteBody />}
-                    {modalName === 'search' && <SearchBody />}
-                    {modalName !== 'delete' && modalName !== 'search' && bodies[`${modalName}_${getSingularTabName(activeTab)}`]}
+                    {activeModal === 'delete' && <DeleteBody />}
+                    {activeModal === 'search' && <SearchBody />}
+                    {activeModal !== 'delete' && activeModal !== 'search' && bodies[`${activeModal}_${getSingularTabName(activeTab)}`]}
                 </div>
 
                 <div className='modal-footer'>
-                    <button type='submit' className='btn confirm-btn'>{texts[modalName].confirm}</button>
-                    <button type='button' className='btn abort-btn' onClick={exitModal}>{texts[modalName].abort}</button>
+                    <button type='submit' className='btn confirm-btn'>{texts[activeModal].confirm}</button>
+                    <button type='button' className='btn abort-btn' onClick={exitModal}>{texts[activeModal].abort}</button>
                 </div>
 
             </div>

@@ -1,13 +1,17 @@
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { setModalData } from "../../../../redux/modalSlice";
 
 export default function AddSiteBody() {
-    const [siteName, setSiteName] = useState({});
+    const dispatch = useDispatch();
+    const [siteName, setSiteName] = useState('');
 
     const handleInputChange = (event) => {
         const { value } = event.target;
-
+        const newModalData = { name: value };
         setSiteName(value);
-        console.log(value);
+        dispatch(setModalData(newModalData));
+        //console.log(newModalData);
     };
 
     return (
