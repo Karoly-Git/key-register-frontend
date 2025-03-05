@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveTab } from '../../redux/activeTab';
+import { setActiveTab } from '../../redux/tabSlice';
 
 export default function TabNav({ tabs }) {
-    const activeTab = useSelector(state => state.activeTab.tabName);
+    const activeTab = useSelector(state => state.tabSlice.activeTabName);
     const dispatch = useDispatch();
 
     function handleButtonClick(tabName) {

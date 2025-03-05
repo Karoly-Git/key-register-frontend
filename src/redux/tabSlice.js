@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const activeTabSlice = createSlice({
-    name: "activeTab",
+    name: "activeTabSlice",
     initialState: {
-        tabName: 'keys'
+        activeTabName: 'keys'
     },
     reducers: {
         setActiveTab: (state, action) => {
-            state.tabName = action.payload;
+            state.activeTabName = action.payload;
         }
     }
 });

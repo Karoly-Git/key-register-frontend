@@ -18,7 +18,7 @@ const tabs = [
 
 
 export default function Tabs() {
-  const activeTab = useSelector(state => state.activeTab.tabName);
+  const activeTab = useSelector(state => state.tabSlice.activeTabName);
 
   return (
     <div className='tabs'>

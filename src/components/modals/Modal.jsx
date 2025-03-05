@@ -20,7 +20,7 @@ import DeleteBody from './bodies/DeleteBody';
 import SearchBody from './bodies/SearchBody';
 
 export default function Modal({ modalName }) {
-    const activeTab = useSelector(state => state.activeTab.tabName);
+    const activeTab = useSelector(state => state.tabSlice.activeTabName);
     const dispatch = useDispatch();
 
     function getSingularTabName(activeTab) {
