@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setActiveModal } from '../../redux/modalSlice';
+import { setActiveModal, setModalData } from '../../redux/modalSlice';
 
 import { MdEdit as EditIcon } from "react-icons/md";
 import { RiDeleteBin6Line as DeleteIcon } from "react-icons/ri";
@@ -18,14 +18,13 @@ export default function SideBar({ record }) {
         console.log(record);
         setIsBodyOn(!isBodyOn);
         dispatch(setActiveModal('edit'));
+        dispatch(setModalData(record));
     };
 
     const handleDeleteClick = () => {
         console.log(record);
         setIsBodyOn(!isBodyOn);
         dispatch(setActiveModal('delete'));
-
-        // 
     };
 
     const handleMouseLeave = () => {

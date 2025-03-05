@@ -16,8 +16,8 @@ import EditCabinetBody from './bodies/edit/EditCabinetBody';
 import EditLocationBody from './bodies/edit/EditLocationBody';
 import EditKeyBody from './bodies/edit/EditKeyBody';
 
-import DeleteBody from './bodies/DeleteBody';
-import SearchBody from './bodies/SearchBody';
+import DeleteBody from './bodies/delete/DeleteBody';
+import SearchBody from './bodies/search/SearchBody';
 
 export default function Modal({ modalName }) {
     const activeTab = useSelector(state => state.tabSlice.activeTabName);
