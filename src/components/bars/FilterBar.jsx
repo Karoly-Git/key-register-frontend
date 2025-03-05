@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTableSorting } from '../../redux/sortingData';
+import { setTableSorting } from '../../redux/dataSlice';
 
 import { IoCaretDownOutline as DotsIcon } from "react-icons/io5";
 import { ImSortAlphaAsc as AscIcon } from "react-icons/im";
 import { ImSortAlphaDesc as DescIcon } from "react-icons/im";
 import { FaArrowDownShortWide as AscIndiIcon } from "react-icons/fa6";
 import { FaArrowDownWideShort as DescIndiIcon } from "react-icons/fa6";
+
 export default function FilterBar({ tabName, colName }) {
     const [isBodyOn, setIsBodyOn] = useState(false);
     const [isSorted, setIsSorted] = useState(null);
     const dispatch = useDispatch();
 
-    const sortByFromStore = useSelector(state => state.sortingData.tableStates[tabName]).sortBy;
-    const isAscFromStore = useSelector(state => state.sortingData.tableStates[tabName]).isAsc;
+    const sortByFromStore = useSelector(state => state.dataSlice.tableStates[tabName]).sortBy;
+    const isAscFromStore = useSelector(state => state.dataSlice.tableStates[tabName]).isAsc;
 
     useEffect(() => {
         const newIsSorted = sortByFromStore === (colName === 'Hook' ? 'hook_number' : `${colName}_name`).toLowerCase();

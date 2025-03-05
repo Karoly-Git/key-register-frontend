@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { AiOutlineClose as CloseIcon } from "react-icons/ai";
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveModal } from '../../redux/activeModal';
+import { setActiveModal } from '../../redux/modalSlice';
 
 import AddSiteBody from './bodies/add/AddSiteBody';
 import AddAccessBody from './bodies/add/AddAccessBody';

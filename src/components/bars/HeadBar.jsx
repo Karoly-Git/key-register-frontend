@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { setActiveModal } from '../../redux/activeModal';
+import { setActiveModal } from '../../redux/modalSlice';
 
 import { RiFunctionLine as DotsIcon } from "react-icons/ri";
 import { BsSearch as SearchIcon } from "react-icons/bs";

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const sortingDataSlice = createSlice({
-    name: "sortingData",
+export const dataSlice = createSlice({
+    name: "dataSlice",
     initialState: {
         tableStates: {
             keys: {
@@ -39,5 +39,5 @@ export const sortingDataSlice = createSlice({
     }
 });
 
-export const { setTableStates, setTableSorting } = sortingDataSlice.actions;
-export default sortingDataSlice.reducer;
+export const { setTableStates, setTableSorting } = dataSlice.actions;
+export default dataSlice.reducer;

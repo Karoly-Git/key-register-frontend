@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import activeTabReducer from './activeTab';
-import activeModalReducer from './activeModal';
-import sortingDataReducer from "./sortingData";
+import activeModalReducer from './modalSlice';
+import sortingDataReducer from "./dataSlice";
 
 export default configureStore({
     reducer: {
         activeTab: activeTabReducer,
-        activeModal: activeModalReducer,
-        sortingData: sortingDataReducer
+        modalSlice: activeModalReducer,
+        dataSlice: sortingDataReducer
     }
 });

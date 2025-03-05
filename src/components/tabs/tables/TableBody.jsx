@@ -7,7 +7,7 @@ export default function TableBody({ tabName }) {
     const [objKeys, setObjKeys] = useState([]);
     const [dataObj, setDataObj] = useState([]);
 
-    const tableState = useSelector(state => state.sortingData.tableStates[tabName]) || {};
+    const tableState = useSelector(state => state.dataSlice.tableStates[tabName]) || {};
     const { sortBy, isAsc } = tableState;
 
     useEffect(() => {
@@ -32,12 +32,12 @@ export default function TableBody({ tabName }) {
 
     return (
         <tbody>
-            {dataObj.map((row, rowIndex) => (
-                <tr key={row.id || `row-${rowIndex}`}>
+            {dataObj.map((record, recordIndex) => (
+                <tr key={record.id || `record-${recordIndex}`}>
                     {objKeys.slice(1).map((objKey) => (
-                        <td key={objKey}>{row[objKey] ?? "N/A"}</td>
+                        <td key={objKey}>{record[objKey] ?? "N/A"}</td>
                     ))}
-                    <td className="td-edit"><SideBar /></td>
+                    <td className="td-edit"><SideBar record={record} /></td>
                 </tr>
             ))}
         </tbody>
