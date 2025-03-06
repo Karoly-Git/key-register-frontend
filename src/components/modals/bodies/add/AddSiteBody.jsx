@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { setModalData } from "../../../../redux/appSlice";
 
 export default function AddSiteBody() {
@@ -11,14 +11,13 @@ export default function AddSiteBody() {
         const newModalData = { name: value };
         setSiteName(value);
         dispatch(setModalData(newModalData));
-        //console.log(newModalData);
     };
 
     return (
         <>
-            <label htmlFor="inp">Site Name:</label>
+            <label htmlFor="site-name-input">Site Name:</label>
             <input
-                id='inp'
+                id='site-name-input'
                 required
                 type="text"
                 name="site-name"

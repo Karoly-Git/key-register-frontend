@@ -16,7 +16,7 @@ export const appSlice = createSlice({
         },
         modal: {
             activeModal: null,
-            modalData: null
+            modalData: {}
         }
     },
     reducers: {

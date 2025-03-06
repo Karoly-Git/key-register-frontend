@@ -11,6 +11,8 @@ export default function DeleteBody() {
     useEffect(() => {
         if (activeTab === 'sites') {
             setEntity(modalData.site_name);
+        } else if (activeTab === 'locations') {
+            setEntity(modalData.site_name);
         } else {
             setEntity('ENTITY');
         }
@@ -18,7 +20,7 @@ export default function DeleteBody() {
 
     return (
         <>
-            <p>Are you sure you want to remove <strong className="tab-name">{entity}</strong>?</p>
+            <p>Are you sure you want to remove <strong className="entity-name">{entity}</strong>?</p>
         </>
     );
 }
