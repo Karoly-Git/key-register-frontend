@@ -12,7 +12,7 @@ export default function DeleteBody() {
         if (activeTab === 'sites') {
             setEntity(modalData.site_name);
         } else if (activeTab === 'locations') {
-            setEntity(modalData.site_name);
+            setEntity(modalData.location_name);
         } else {
             setEntity('ENTITY');
         }
