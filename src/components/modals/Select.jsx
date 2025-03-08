@@ -5,13 +5,11 @@ import getTable from "../../services/getTable";
 
 export default function Select({ name }) {
     const dispatch = useDispatch();
-    const modalData = useSelector((state) => state.app.modalData) || {}; // Ensure modalData exists
+    const modalData = useSelector((state) => state.app.modal.modalData);
     const [data, setData] = useState([]);
     const [selectedId, setSelectedId] = useState("");
 
     useEffect(() => {
-        if (!name) return; // Prevent errors if name is missing
-
         getTable(name === 'access' ? 'accesses' : `${name}s`)
             .then((result) => {
                 if (!result.length) return;
@@ -23,18 +21,30 @@ export default function Select({ name }) {
                 });
 
                 setData(sortedResult);
-                setSelectedId(sortedResult[0]?.id || ""); // Set default selection
+                setSelectedId(sortedResult[0]?.id);
 
-                dispatch(setModalData({ ...modalData, [`${name}_id`]: sortedResult[0]?.id || "" }));
+                // Directly update the modalData with the new ID
+                dispatch(setModalData({
+                    ...modalData, // Preserve existing data
+                    [`${name}_id`]: sortedResult[0]?.id, // Add the new value
+                }));
             })
             .catch((error) => console.error(`Error fetching ${name}:`, error));
-    }, [dispatch, name]);
+    }, []);
 
     const handleSelectChange = (event) => {
         const { value } = event.target;
         setSelectedId(value);
-        dispatch(setModalData({ ...modalData, [`${name}_id`]: value }));
+
+        // Directly update the modalData with the selected value
+
+        console.log(modalData);
+        dispatch(setModalData({
+            ...modalData, // Preserve existing data
+            [`${name}_id`]: value, // Update the specific ID
+        }));
     };
+
 
     return (
         <>

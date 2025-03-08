@@ -38,6 +38,7 @@ export const appSlice = createSlice({
         },
         setModalData: (state, action) => {
             state.modal.modalData = action.payload;
+            console.log(state.modal.modalData);
         }
     }
 });

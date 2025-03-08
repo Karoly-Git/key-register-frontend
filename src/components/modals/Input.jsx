@@ -5,7 +5,7 @@ import { setModalData } from "../../redux/appSlice";
 export default function Input({ name }) {
     const dispatch = useDispatch();
     const [inpValue, setInpValue] = useState("");
-    const modalData = useSelector((state) => state.app.modal.modalData) || {};
+    const modalData = useSelector((state) => state.app.modal.modalData);
 
     const handleInputChange = (event) => {
         const { value } = event.target;
