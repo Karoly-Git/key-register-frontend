@@ -24,7 +24,7 @@ export default function TabNav({ tabs }) {
                         </button>
                     </li>
                 ))}
-                <li><button className='tab-btn placeholder-btn'></button></li>
+                {false && <li><button className='tab-btn placeholder-btn'></button></li>}
             </ul>
         </nav>
     );

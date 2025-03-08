@@ -3,12 +3,12 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: white;
   border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray;
+  padding: 0.75rem 1rem 0;
 }
 .table thead {
-  border-bottom: 3px solid lightgray;
+  border-bottom: 2px solid rgb(117, 117, 117);
+  background-color: lightgreen;
 }
 .table thead tr {
   display: flex;
@@ -33,11 +33,13 @@
   width: unset;
 }
 .table tbody tr {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid rgb(193, 193, 193);
   width: 100%;
   display: flex;
   align-items: center;
   padding-right: 0.5rem;
+  background-color: white;
+  font-size: 0.8rem;
 }
 .table tbody tr:hover {
   background-color: rgb(247, 253, 255);
