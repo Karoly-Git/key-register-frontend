@@ -60,7 +60,7 @@
 }
 .tab-nav ul li .tab-btn .icon,
 .tab-nav ul li .tab-btn .tab-name {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.5);
 }
 .tab-nav ul li .tab-btn:hover .icon,
 .tab-nav ul li .tab-btn:hover .tab-name {

@@ -8,8 +8,9 @@
     padding: 1rem 1rem 0;
 
     thead {
-        border-bottom: 2px solid rgb(117, 117, 117);
+        //border-bottom: 2px solid rgb(117, 117, 117);
         background-color: lightgreen;
+        margin-bottom: 3px;
 
         tr {
             display: flex;
@@ -39,18 +40,18 @@
 
     tbody {
         tr {
-            border-bottom: 1px solid rgb(193, 193, 193);
+            //border-bottom: 1px solid rgb(193, 193, 193);
             width: 100%;
             display: flex;
             align-items: center;
             padding-right: 0.5rem;
             background-color: white;
-            //margin-bottom: 3px;
+            margin-bottom: 3px;
             font-size: 0.8rem;
 
 
             &:hover {
-                background-color: rgb(247, 253, 255);
+                background-color: rgb(236, 234, 150);
             }
 
             td {
@@ -62,6 +63,9 @@
 
             .td-edit {
                 width: unset;
+                position: relative;
+                margin-left: -32px;
+                background-color: transparent;
             }
         }
     }
