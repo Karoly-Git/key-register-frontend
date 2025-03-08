@@ -1,7 +1,6 @@
 // Import React and custom components
 import React from 'react';
 import FilterBar from '../../bars/FilterBar';
-import HeadBar from '../../bars/HeadBar';
 
 export default function TableHead({ tabName, columns }) {
     return (
@@ -15,11 +14,6 @@ export default function TableHead({ tabName, columns }) {
                         <FilterBar tabName={tabName} colName={colName} />
                     </th>
                 ))}
-
-                {/* Render HeadBar in the last table header */}
-                <th className="th-edit">
-                    <HeadBar />
-                </th>
             </tr>
         </thead>
     );
