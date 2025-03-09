@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 // Import Redux actions
-import { setActiveModal } from '../../redux/appSlice';
+import { setActiveModalName } from '../../redux/appSlice';
 
 // Import icons from react-icons
 import { RiFunctionLine as DotsIcon } from "react-icons/ri";
@@ -22,13 +22,13 @@ export default function HeadBar() {
     // Handle Add button click
     const handleAddClick = () => {
         setIsBodyOn(true);
-        dispatch(setActiveModal('add')); // Set the active modal to 'add'
+        dispatch(setActiveModalName('add')); // Set the active modal to 'add'
     };
 
     // Handle Search button click
     const handleSearchClick = () => {
         setIsBodyOn(true);
-        dispatch(setActiveModal('search')); // Set the active modal to 'search'
+        dispatch(setActiveModalName('search')); // Set the active modal to 'search'
     };
 
     // Handle mouse leave event to close the body

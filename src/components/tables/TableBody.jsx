@@ -1,32 +1,29 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTableData } from "../../../redux/appSlice";
-import SideBar from "../../bars/SideBar";
-import getTable from "../../../services/getTable";
+import { setActiveTableData } from "../../redux/appSlice";
+import SideBar from "../bars/SideBar";
+import getTable from "../../services/getTable";
 
-export default function TableBody({ tabName }) {
+export default function TableBody({ tableName }) {
     const dispatch = useDispatch();
-    const tableData = useSelector(state => state.app.activeTab.tableData) || [];
+    const data = useSelector(state => state.app.activeTable.data) || [];
 
     const [objKeys, setObjKeys] = useState([]);
 
-    // Get sorting state from Redux
-    const tableState = useSelector(state => state.app.tableStates[tabName]) || {};
+    const tableState = useSelector(state => state.app.tableStates[tableName]) || {};
     const { sortBy, isAsc } = tableState;
 
     useEffect(() => {
-        // Fetch table data and store it in Redux
-        getTable(tabName)
+        getTable(tableName)
             .then(result => {
                 if (result.length > 0) {
                     dispatch(setActiveTableData(result));
                     setObjKeys(Object.keys(result[0]));
                 }
             });
-    }, [tabName, dispatch]);
+    }, [tableName, dispatch]);
 
-    // Sort data if sorting is enabled
-    const sortedData = [...tableData].sort((a, b) => {
+    const sortedData = [...data].sort((a, b) => {
         if (!sortBy) return 0;
         const valueA = String(a[sortBy] ?? "").toLowerCase();
         const valueB = String(b[sortBy] ?? "").toLowerCase();

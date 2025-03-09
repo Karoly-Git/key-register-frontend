@@ -5,7 +5,7 @@ import getTable from "../../services/getTable";
 
 export default function Select({ name }) {
     const dispatch = useDispatch();
-    const modalData = useSelector((state) => state.app.modal.modalData);
+    const modalData = useSelector((state) => state.app.activeModal.data);
     const [data, setData] = useState([]);
     const [selectedId, setSelectedId] = useState("");
 
@@ -23,7 +23,7 @@ export default function Select({ name }) {
                 setData(sortedResult);
                 setSelectedId(sortedResult[0]?.id);
 
-                // Directly update the modalData with the new ID
+                // Directly update the data with the new ID
                 dispatch(setModalData({
                     ...modalData, // Preserve existing data
                     [`${name}_id`]: sortedResult[0]?.id, // Add the new value
@@ -36,7 +36,7 @@ export default function Select({ name }) {
         const { value } = event.target;
         setSelectedId(value);
 
-        // Directly update the modalData with the selected value
+        // Directly update the data with the selected value
 
         console.log(modalData);
         dispatch(setModalData({

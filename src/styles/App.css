@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.App {
+.App .key-register {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -14,33 +14,34 @@
   margin-right: auto;
   background-color: lightskyblue;
 }
-.App header {
+.App .key-register header {
   background-color: unset;
 }
-.App main {
-  height: 100%;
+.App .key-register main {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.App main .tabs {
+.App .key-register main .tabs {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-.App footer {
-  background-color: black;
+.App .key-register footer {
   color: white;
   text-align: center;
-  padding: 0.5rem;
   font-size: 0.75rem;
   margin-top: auto;
   margin-bottom: 0;
 }
-.App footer a {
+.App .key-register footer .developer {
+  background-color: black;
+  padding: 0.5rem 0;
+}
+.App .key-register footer .developer a {
   color: #ffc66d;
   text-decoration: none;
 }
-.App footer a:hover {
+.App .key-register footer .developer a:hover {
   text-decoration: underline;
 }/*# sourceMappingURL=App.css.map */

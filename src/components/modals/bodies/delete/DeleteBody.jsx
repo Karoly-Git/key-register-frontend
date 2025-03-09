@@ -5,18 +5,18 @@ export default function DeleteBody() {
     const [entity, setEntity] = useState('');  // Initialize as empty string
 
     // Use default shallowEqual for memoization
-    const modalData = useSelector(state => state.app.modal.modalData);
-    const activeTab = useSelector(state => state.app.activeTab.name);
+    const data = useSelector(state => state.app.modal.data);
+    const activeTable = useSelector(state => state.app.activeTable.name);
 
     useEffect(() => {
-        if (activeTab === 'sites') {
-            setEntity(modalData.site_name);
-        } else if (activeTab === 'locations') {
-            setEntity(modalData.location_name);
+        if (activeTable === 'sites') {
+            setEntity(data.site_name);
+        } else if (activeTable === 'locations') {
+            setEntity(data.location_name);
         } else {
             setEntity('ENTITY');
         }
-    }, [modalData]); // Only depend on modalData
+    }, [data]); // Only depend on data
 
     return (
         <>

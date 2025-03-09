@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveModal, setModalData, setActiveTableData } from '../../redux/appSlice';
+import { setActiveModalName, setModalData, setActiveTableData } from '../../redux/appSlice';
 
 import getTable from '../../services/getTable';
 import addRecord from '../../services/addRecord';
@@ -25,13 +25,13 @@ import SearchBody from './bodies/search/SearchBody';
 
 export default function Modal() {
     const dispatch = useDispatch();
-    const activeModal = useSelector(state => state.app.modal.activeModal);
-    const activeTab = useSelector(state => state.app.activeTab.name);
-    const singularTabName = getSingularTabName(activeTab);
-    const modalData = useSelector(state => state.app.modal.modalData);
+    const activeModalName = useSelector(state => state.app.activeModal.name);
+    const activeTable = useSelector(state => state.app.activeTable.name);
+    const singularTabName = getSingularTabName(activeTable);
+    const data = useSelector(state => state.app.activeModal.data);
 
-    function getSingularTabName(activeTab) {
-        return activeTab === 'accesses' ? 'access' : activeTab.slice(0, -1);
+    function getSingularTabName(activeTable) {
+        return activeTable === 'accesses' ? 'access' : activeTable.slice(0, -1);
     }
 
     const texts = {
@@ -58,15 +58,15 @@ export default function Modal() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (modalData) {
-            if (activeModal === 'add') {
-                await addRecord(activeTab, modalData); // Ensure record is added first
-            } else if (activeModal === 'delete') {
-                await deleteRecordById(activeTab, modalData.id); // Ensure deletion completes
+        if (data) {
+            if (activeModalName === 'add') {
+                await addRecord(activeTable, data); // Ensure record is added first
+            } else if (activeModalName === 'delete') {
+                await deleteRecordById(activeTable, data.id); // Ensure deletion completes
             }
 
             // Fetch updated table data after modification
-            getTable(activeTab)
+            getTable(activeTable)
                 .then(result => {
                     dispatch(setActiveTableData(result));
                 });
@@ -77,7 +77,7 @@ export default function Modal() {
 
     const exitModal = () => {
         dispatch(setModalData(null));
-        dispatch(setActiveModal(null));
+        dispatch(setActiveModalName(null));
     };
 
     const handleKeyDown = (event) => {
@@ -94,23 +94,23 @@ export default function Modal() {
     }, []);
 
     return (
-        <form className={`modal ${activeModal}-modal`} onSubmit={handleSubmit}>
+        <form className={`modal ${activeModalName}-modal`} onSubmit={handleSubmit}>
             <div className='modal-container'>
 
                 <div className='modal-head'>
-                    <h2>{texts[activeModal].h2}</h2>
+                    <h2>{texts[activeModalName].h2}</h2>
                     <CloseIcon className='icon' onClick={exitModal} />
                 </div>
 
                 <div className='modal-body'>
-                    {activeModal === 'delete' && <DeleteBody />}
-                    {activeModal === 'search' && <SearchBody />}
-                    {activeModal !== 'delete' && activeModal !== 'search' && bodies[`${activeModal}_${getSingularTabName(activeTab)}`]}
+                    {activeModalName === 'delete' && <DeleteBody />}
+                    {activeModalName === 'search' && <SearchBody />}
+                    {activeModalName !== 'delete' && activeModalName !== 'search' && bodies[`${activeModalName}_${getSingularTabName(activeTable)}`]}
                 </div>
 
                 <div className='modal-footer'>
-                    <button type='submit' className='btn confirm-btn'>{texts[activeModal].confirm}</button>
-                    <button type='button' className='btn abort-btn' onClick={exitModal}>{texts[activeModal].abort}</button>
+                    <button type='submit' className='btn confirm-btn'>{texts[activeModalName].confirm}</button>
+                    <button type='button' className='btn abort-btn' onClick={exitModal}>{texts[activeModalName].abort}</button>
                 </div>
 
             </div>

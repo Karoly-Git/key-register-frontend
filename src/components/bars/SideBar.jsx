@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 // Import Redux actions
-import { setActiveModal, setModalData } from '../../redux/appSlice';
+import { setActiveModalName, setModalData } from '../../redux/appSlice';
 
 // Import icons from react-icons
 import { MdEdit as EditIcon } from "react-icons/md";
@@ -24,7 +24,7 @@ export default function SideBar({ record }) {
     const handleEditClick = () => {
         console.log(record); // Log record for debugging
         setIsBodyOn(false); // Close the body when editing
-        dispatch(setActiveModal('edit')); // Set the active modal to 'edit'
+        dispatch(setActiveModalName('edit')); // Set the active modal to 'edit'
         dispatch(setModalData(record)); // Set the modal data to the current record
     };
 
@@ -32,7 +32,7 @@ export default function SideBar({ record }) {
     const handleDeleteClick = () => {
         console.log(record); // Log record for debugging
         setIsBodyOn(false); // Close the body when deleting
-        dispatch(setActiveModal('delete')); // Set the active modal to 'delete'
+        dispatch(setActiveModalName('delete')); // Set the active modal to 'delete'
         dispatch(setModalData(record)); // Set the modal data to the current record
     };
 

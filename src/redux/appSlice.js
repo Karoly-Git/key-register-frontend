@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 export const appSlice = createSlice({
     name: "appSlice",
     initialState: {
-        activeTab: {
+        activeTable: {
             name: 'keys',
-            tableData: null,
+            data: [],
         },
         tableStates: {
             keys: { sortBy: 'access_name', isAsc: true },
@@ -14,17 +14,19 @@ export const appSlice = createSlice({
             locations: { sortBy: 'location_name', isAsc: true },
             sites: { sortBy: 'site_name', isAsc: true }
         },
-        modal: {
-            activeModal: null,
-            modalData: {}
+        //modal: {
+        activeModal: {
+            //activeModal: null,
+            name: '',
+            data: {}
         }
     },
     reducers: {
-        setActiveTab: (state, action) => {
-            state.activeTab.name = action.payload;
+        setActiveTableName: (state, action) => {
+            state.activeTable.name = action.payload;
         },
         setActiveTableData: (state, action) => {
-            state.activeTab.tableData = action.payload;
+            state.activeTable.data = action.payload;
         },
         setTableStates: (state, action) => {
             state.tableStates = action.payload;
@@ -33,15 +35,16 @@ export const appSlice = createSlice({
             const { tableName, sortBy, isAsc } = action.payload;
             state.tableStates[tableName] = { sortBy, isAsc };
         },
-        setActiveModal: (state, action) => {
-            state.modal.activeModal = action.payload;
+        setActiveModalName: (state, action) => {
+            //state.modal.activeModal = action.payload;
+            state.activeModal.name = action.payload;
         },
         setModalData: (state, action) => {
-            state.modal.modalData = action.payload;
-            console.log(state.modal.modalData);
+            state.activeModal.data = action.payload;
+            console.log(state.activeModal.data);
         }
     }
 });
 
-export const { setActiveTab, setActiveTableData, setTableStates, setTableSorting, setActiveModal, setModalData } = appSlice.actions;
+export const { setActiveTableName, setActiveTableData, setTableStates, setTableSorting, setActiveModalName, setModalData } = appSlice.actions;
 export default appSlice.reducer;

@@ -1,9 +1,6 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
-import { setActiveModal } from '../../redux/appSlice';
-
 import { useRef } from "react";
+import { useDispatch } from 'react-redux';
+import { setActiveModalName } from '../../redux/appSlice';
 import { BsSearch as SearchIcon, BsPlusLg as PlusIcon } from "react-icons/bs";
 
 export default function SearchBar() {
@@ -18,7 +15,7 @@ export default function SearchBar() {
     };
 
     const handleAddIconClick = () => {
-        dispatch(setActiveModal('add'));
+        dispatch(setActiveModalName('add'));
     };
 
 

@@ -5,53 +5,57 @@
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  font-family: sans-serif;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: lightskyblue;
-
-  header {
-    // border: 3px solid red;
-    background-color: unset;
-  }
-
-  main {
-    // border: 3px solid red;
-    height: 100%;
-    height: 100%;
+  .key-register {
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    font-family: sans-serif;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightskyblue;
 
-    .tabs {
+    header {
+      // border: 3px solid red;
+      background-color: unset;
+    }
+
+    main {
+      // border: 3px solid red;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      // border: 3px solid green;
-      height: 100%;
-      // padding: 3px;
+
+      .tabs {
+        display: flex;
+        flex-direction: column;
+        // border: 3px solid green;
+        height: 100%;
+        // padding: 3px;
+      }
     }
-  }
 
-  footer {
-    // border: 3px solid red;
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 0.5rem;
-    font-size: 0.75rem;
+    footer {
+      // border: 3px solid red;
+      color: white;
+      text-align: center;
+      font-size: 0.75rem;
 
-    margin-top: auto;
-    margin-bottom: 0;
+      margin-top: auto;
+      margin-bottom: 0;
 
-    a {
-      color: #ffc66d;
-      text-decoration: none;
+      .developer {
+        background-color: black;
+        padding: 0.5rem 0;
 
-      &:hover {
-        text-decoration: underline;
+        a {
+          color: #ffc66d;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }

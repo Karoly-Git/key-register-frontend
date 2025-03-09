@@ -29,9 +29,8 @@
     }
 }
 
-.tab-nav {
+.table-nav {
     margin-top: auto;
-    margin-bottom: 0;
     width: 100%;
     background-color: lightgreen;
 
@@ -45,7 +44,7 @@
             display: flex;
             width: 20%;
 
-            .tab-btn {
+            a {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
@@ -81,7 +80,7 @@
                 }
             }
 
-            .active-tab-btn {
+            .active-table-btn {
                 border-top: 2px solid black;
 
                 .icon,

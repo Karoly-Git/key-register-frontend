@@ -25,23 +25,22 @@
   background: #555;
 }
 
-.tab-nav {
+.table-nav {
   margin-top: auto;
-  margin-bottom: 0;
   width: 100%;
   background-color: lightgreen;
 }
-.tab-nav ul {
+.table-nav ul {
   width: 100%;
   display: flex;
   justify-content: space-between;
   list-style: none;
 }
-.tab-nav ul li {
+.table-nav ul li {
   display: flex;
   width: 20%;
 }
-.tab-nav ul li .tab-btn {
+.table-nav ul li a {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -55,33 +54,33 @@
           user-select: none;
   cursor: pointer;
 }
-.tab-nav ul li .tab-btn .icon {
+.table-nav ul li a .icon {
   font-size: 1.25rem;
 }
-.tab-nav ul li .tab-btn .icon,
-.tab-nav ul li .tab-btn .tab-name {
+.table-nav ul li a .icon,
+.table-nav ul li a .tab-name {
   color: rgba(0, 0, 0, 0.5);
 }
-.tab-nav ul li .tab-btn:hover .icon,
-.tab-nav ul li .tab-btn:hover .tab-name {
+.table-nav ul li a:hover .icon,
+.table-nav ul li a:hover .tab-name {
   color: black;
 }
-.tab-nav ul li .tab-btn .tab-name {
+.table-nav ul li a .tab-name {
   white-space: nowrap;
   text-transform: capitalize;
 }
-.tab-nav ul li .active-tab-btn {
+.table-nav ul li .active-table-btn {
   border-top: 2px solid black;
 }
-.tab-nav ul li .active-tab-btn .icon,
-.tab-nav ul li .active-tab-btn .tab-name {
+.table-nav ul li .active-table-btn .icon,
+.table-nav ul li .active-table-btn .tab-name {
   color: black;
 }
-.tab-nav ul li .active-tab-btn:hover .icon,
-.tab-nav ul li .active-tab-btn:hover .tab-name {
+.table-nav ul li .active-table-btn:hover .icon,
+.table-nav ul li .active-table-btn:hover .tab-name {
   color: black;
 }
-.tab-nav ul li .placeholder-btn {
+.table-nav ul li .placeholder-btn {
   background-color: unset;
   pointer-events: none;
   height: 33px;

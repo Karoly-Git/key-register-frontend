@@ -5,13 +5,13 @@ import { setTableSorting } from '../../redux/appSlice';
 
 import { FaArrowDownShortWide as AscIndiIcon, FaArrowDownWideShort as DescIndiIcon } from "react-icons/fa6";
 
-export default function FilterBar({ tabName, colName }) {
+export default function FilterBar({ tableName, colName }) {
     const dispatch = useDispatch();
 
     const [isSorted, setIsSorted] = useState(false);
 
-    const sortBy = useSelector(state => state.app.tableStates[tabName]).sortBy;
-    const isAsc = useSelector(state => state.app.tableStates[tabName]).isAsc;
+    const sortBy = useSelector(state => state.app.tableStates[tableName]).sortBy;
+    const isAsc = useSelector(state => state.app.tableStates[tableName]).isAsc;
 
     useEffect(() => {
         const newIsSorted = sortBy === (colName === 'Hook' ? 'hook_number' : `${colName}_name`).toLowerCase();
@@ -21,7 +21,7 @@ export default function FilterBar({ tabName, colName }) {
     const handleSort = () => {
         const newSortBy = colName === 'Hook' ? 'hook_number' : `${colName.toLowerCase()}_name`;
         const newIsAsc = sortBy === newSortBy ? !isAsc : true;
-        dispatch(setTableSorting({ tableName: tabName, sortBy: newSortBy, isAsc: newIsAsc }));
+        dispatch(setTableSorting({ tableName: tableName, sortBy: newSortBy, isAsc: newIsAsc }));
     };
 
 
