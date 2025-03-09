@@ -9,6 +9,7 @@
 .table thead {
   background-color: lightgreen;
   margin-bottom: 3px;
+  padding: 0.5rem 0;
 }
 .table thead tr {
   display: flex;
