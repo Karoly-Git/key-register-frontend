@@ -8,7 +8,8 @@ import { setActiveModal, setModalData } from '../../redux/appSlice';
 // Import icons from react-icons
 import { MdEdit as EditIcon } from "react-icons/md";
 import { RiDeleteBin6Line as DeleteIcon } from "react-icons/ri";
-import { RiMenuFoldFill as DotsIcon } from "react-icons/ri";
+//import { RiMenuFoldFill as DotsIcon } from "react-icons/ri";
+import { HiOutlineDotsVertical as DotsIcon } from "react-icons/hi";
 
 export default function SideBar({ record }) {
     const [isBodyOn, setIsBodyOn] = useState(false); // State to track if the body is toggled on

@@ -41,9 +41,6 @@
   margin-bottom: 3px;
   font-size: 0.8rem;
 }
-.table tbody tr:hover {
-  background-color: rgb(236, 234, 150);
-}
 .table tbody tr td {
   width: 100%;
   display: flex;
