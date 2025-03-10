@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalData } from "../../redux/appSlice";
 import getTable from "../../services/getTable";
+import getHooksByCabinetId from "../../services/getHooksByCabinetId";
 
 export default function Select({ name }) {
     const dispatch = useDispatch();
@@ -9,27 +10,35 @@ export default function Select({ name }) {
     const [data, setData] = useState([]);
     const [selectedId, setSelectedId] = useState("");
 
+    const cabinetId = 1;
+
     useEffect(() => {
-        getTable(name === 'access' ? 'accesses' : `${name}s`)
-            .then((result) => {
-                if (!result.length) return;
+        if (name === 'hook') {
+            const fetchedData = [3, 1, 4, 2, 5];
+            fetchedData.sort((a, b) => a - b);
+            setData(fetchedData);
+        } else {
+            getTable(name === 'access' ? 'accesses' : `${name}s`)
+                .then((result) => {
+                    if (!result.length) return;
 
-                const sortedResult = result.sort((a, b) => {
-                    const valueA = String(a[`${name}_name`] ?? "").toLowerCase();
-                    const valueB = String(b[`${name}_name`] ?? "").toLowerCase();
-                    return valueA.localeCompare(valueB);
-                });
+                    const sortedResult = result.sort((a, b) => {
+                        const valueA = String(a[`${name}_name`] ?? "").toLowerCase();
+                        const valueB = String(b[`${name}_name`] ?? "").toLowerCase();
+                        return valueA.localeCompare(valueB);
+                    });
 
-                setData(sortedResult);
-                setSelectedId(sortedResult[0]?.id);
+                    setData(sortedResult);
+                    setSelectedId(sortedResult[0]?.id);
 
-                // Directly update the data with the new ID
-                dispatch(setModalData({
-                    ...modalData, // Preserve existing data
-                    [`${name}_id`]: sortedResult[0]?.id, // Add the new value
-                }));
-            })
-            .catch((error) => console.error(`Error fetching ${name}:`, error));
+                    // Directly update the data with the new ID
+                    dispatch(setModalData({
+                        ...modalData, // Preserve existing data
+                        [`${name}_id`]: sortedResult[0]?.id, // Add the new value
+                    }));
+                })
+                .catch((error) => console.error(`Error fetching ${name}:`, error));
+        }
     }, []);
 
     const handleSelectChange = (event) => {
@@ -50,9 +59,9 @@ export default function Select({ name }) {
         <>
             <label htmlFor={`${name}_id`}>Select {name}:</label>
             <select name={`${name}_id`} value={selectedId} onChange={handleSelectChange}>
-                {data.map((record) => (
-                    <option key={record.id} value={record.id}>
-                        {record[`${name}_name`]}
+                {data.map((record, recIndex) => (
+                    <option key={record.id || recIndex} value={record.id || recIndex}>
+                        {record[`${name}_name`] || record}
                     </option>
                 ))}
             </select>

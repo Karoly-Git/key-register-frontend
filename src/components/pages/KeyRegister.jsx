@@ -10,7 +10,7 @@ export default function KeyRegister({ page }) {
 
     useEffect(() => {
         dispatch(setActiveTableName(page));
-    }, [dispatch, page]);
+    }, []);
 
     return (
         <div className='key-register'>

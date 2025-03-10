@@ -2,16 +2,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
-.App .key-register {
-  display: flex;
-  flex-direction: column;
+.App {
   height: 100vh;
-  font-family: sans-serif;
-  max-width: 400px;
+}
+.App .key-register {
   margin-left: auto;
   margin-right: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
   background-color: lightskyblue;
 }
 .App .key-register header {
@@ -34,14 +37,28 @@
   margin-top: auto;
   margin-bottom: 0;
 }
-.App .key-register footer .developer {
+.App .key-register footer a {
+  text-decoration: none;
+}
+
+.developer {
   background-color: black;
   padding: 0.5rem 0;
 }
-.App .key-register footer .developer a {
+.developer a {
   color: #ffc66d;
   text-decoration: none;
 }
-.App .key-register footer .developer a:hover {
+.developer a:hover {
   text-decoration: underline;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.loading span {
+  text-transform: uppercase;
 }/*# sourceMappingURL=App.css.map */

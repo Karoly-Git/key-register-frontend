@@ -2,21 +2,29 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 export default function DeleteBody() {
-    const [entity, setEntity] = useState('');  // Initialize as empty string
-
-    // Use default shallowEqual for memoization
-    const data = useSelector(state => state.app.modal.data);
+    const [entity, setEntity] = useState('');
+    const data = useSelector(state => state.app.activeModal.data);
     const activeTable = useSelector(state => state.app.activeTable.name);
 
     useEffect(() => {
-        if (activeTable === 'sites') {
-            setEntity(data.site_name);
-        } else if (activeTable === 'locations') {
-            setEntity(data.location_name);
-        } else {
-            setEntity('ENTITY');
+        switch (activeTable) {
+            case 'sites':
+                setEntity(data.site_name);
+                break;
+            case 'locations':
+                setEntity(data.location_name);
+                break;
+            case 'cabinets':
+                setEntity(data.cabinet_name);
+                break;
+            case 'accesses':
+            case 'keys':
+                setEntity(data.access_name);
+                break;
+            default:
+                setEntity('');
         }
-    }, [data]); // Only depend on data
+    }, [data]);
 
     return (
         <>
