@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalData } from "../../redux/appSlice";
+import getSiteIdByName from "../../services/getSiteIdByName";
+import getLocationIdByName from "../../services/getLocationIdByName";
 
 export default function Input({ name, action }) {
     const dispatch = useDispatch();
@@ -8,18 +10,58 @@ export default function Input({ name, action }) {
     const [inpValue, setInpValue] = useState("");
 
     useEffect(() => {
-        if (action === 'edit') {
-            setInpValue(data[`${name}_name`] || '');
-        } else if (action === 'add') {
-            setInpValue('');
-            dispatch(setModalData({ ...data, [`${name}_name`]: '' }));
-        }
-    }, [])
+        if (action === "edit") {
+            if (name === "site") {
+                setInpValue(data[`${name}_name`] || "");
+            }
+            if (name === "location" || name === 'access') {
+                setInpValue(data[`${name}_name`] || "");
 
-    const handleInputChange = (event) => {
+                getSiteIdByName(data.site_name)
+                    .then(id => {
+                        dispatch(setModalData({ ...data, site_id: id }));
+                    })
+                    .catch(err => console.error("Failed to fetch site ID:", err));
+            }
+            if (name === "cabinet") {
+                setInpValue(data[`${name}_name`] || "");
+
+                getLocationIdByName(data.location_name)
+                    .then(id => {
+                        dispatch(setModalData({ ...data, location_id: id }));
+                    })
+                    .catch(err => console.error("Failed to fetch site ID:", err));
+            }
+        }
+
+        if (action === "add") {
+            setInpValue("");
+            dispatch(setModalData({ ...data, [`${name}_name`]: "" }));
+        }
+    }, []);
+
+    const handleInputChange = async (event) => {
         const { value } = event.target;
-        setInpValue(value);
-        dispatch(setModalData({ ...data, [`${name}_name`]: value }));
+
+        if (action === 'edit') {
+            setInpValue(value);
+            if (name === 'site') {
+                dispatch(setModalData({ ...data, [`${name}_name`]: value }));
+            }
+            if (name === "location" || name === 'access') {
+                const siteId = await getSiteIdByName(data.site_name);
+                dispatch(setModalData({ ...data, [`${name}_name`]: value, site_id: siteId }));
+            }
+            if (name === 'cabinet') {
+                const locationId = await getLocationIdByName(data.location_name);
+                dispatch(setModalData({ ...data, [`${name}_name`]: value, location_id: locationId }));
+            }
+        }
+        if (action === 'add') {
+            const { value } = event.target;
+            setInpValue(value);
+            dispatch(setModalData({ ...data, [`${name}_name`]: value }));
+        }
     };
 
     return (

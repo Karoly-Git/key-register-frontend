@@ -4,6 +4,7 @@ import { setActiveModalName, resetModalData, setActiveTableData } from '../../re
 
 import getTable from '../../services/getTable';
 import addRecord from '../../services/addRecord';
+import updateRecordById from '../../services/updateRecordById';
 import deleteRecordById from '../../services/deleteRecordById';
 
 import { AiOutlineClose as CloseIcon } from "react-icons/ai";
@@ -60,23 +61,34 @@ export default function Modal() {
 
         if (data) {
             if (activeModalName === 'add') {
-                if (activeTable === 'sites') {
-                    await addRecord(activeTable, { name: data.site_name });
+                const tableDataMap = {
+                    sites: { name: data.site_name },
+                    locations: { name: data.location_name, site_id: Number(data.site_id) },
+                    cabinets: { name: data.cabinet_name, location_id: Number(data.location_id) },
+                    accesses: { name: data.access_name, site_id: Number(data.site_id) },
+                    keys: { hook_number: 15, cabinet_id: Number(data.cabinet_id), access_id: Number(data.access_id) }
+                };
+
+                if (tableDataMap[activeTable]) {
+                    await addRecord(activeTable, tableDataMap[activeTable]);
                 }
-                if (activeTable === 'locations') {
-                    await addRecord(activeTable, { name: data.location_name, site_id: data.site_id });
+            }
+
+            if (activeModalName === 'edit') {
+                const tableDataMap = {
+                    sites: { name: data.site_name },
+                    locations: { name: data.location_name, site_id: Number(data.site_id) },
+                    cabinets: { name: data.cabinet_name, location_id: Number(data.location_id) },
+                    accesses: { name: data.access_name, site_id: Number(data.site_id) },
+                    keys: { hook_number: 15, cabinet_id: Number(data.cabinet_id), access_id: Number(data.access_id) }
+                };
+
+                if (tableDataMap[activeTable]) {
+                    await updateRecordById(activeTable, data.id, tableDataMap[activeTable]);
                 }
-                if (activeTable === 'cabinets') { // Select site is just for filtering purpos, no required to save the data, site id will be taken automatically
-                    await addRecord(activeTable, { name: data.cabinet_name, location_id: data.location_id });
-                }
-                if (activeTable === 'accesses') {
-                    await addRecord(activeTable, { name: data.access_name, site_id: data.site_id });
-                }
-                if (activeTable === 'keys') {
-                    console.log(15, Number(data.cabinet_id), Number(data.access_id));
-                    await addRecord(activeTable, { hook_number: 15, cabinet_id: Number(data.cabinet_id), access_id: Number(data.access_id) });
-                }
-            } else if (activeModalName === 'delete') {
+            }
+
+            if (activeModalName === 'delete') {
                 await deleteRecordById(activeTable, data.id);
             }
 

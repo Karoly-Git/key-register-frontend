@@ -25,6 +25,7 @@ export default function SideBar({ record }) {
         setIsBodyOn(false); // Close the body when editing
         dispatch(setActiveModalName('edit')); // Set the active modal to 'edit'
         dispatch(setModalData(record)); // Set the modal data to the current record
+        console.log(record);
     };
 
     // Handle the delete button click
@@ -42,14 +43,10 @@ export default function SideBar({ record }) {
     return (
         <div className="icon-bar icon-bar-edit" onMouseLeave={handleMouseLeave}>
             <div className={isBodyOn ? 'bar-body body-on' : 'bar-body'}>
-                {/* Edit icon to trigger the edit modal */}
                 <EditIcon className="icon edit-icon" onClick={handleEditClick} />
-
-                {/* Delete icon to trigger the delete modal */}
                 <DeleteIcon className="icon delete-icon" onClick={handleDeleteClick} />
             </div>
             <div className="bar-tail">
-                {/* Dots icon to toggle the body visibility */}
                 <DotsIcon className="icon dots-icon" onClick={toggleBody} />
             </div>
         </div>
