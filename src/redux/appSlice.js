@@ -14,9 +14,7 @@ export const appSlice = createSlice({
             locations: { sortBy: 'location_name', isAsc: true },
             sites: { sortBy: 'site_name', isAsc: true }
         },
-        //modal: {
         activeModal: {
-            //activeModal: null,
             name: '',
             data: {}
         }
@@ -36,15 +34,30 @@ export const appSlice = createSlice({
             state.tableStates[tableName] = { sortBy, isAsc };
         },
         setActiveModalName: (state, action) => {
-            //state.modal.activeModal = action.payload;
             state.activeModal.name = action.payload;
         },
         setModalData: (state, action) => {
-            state.activeModal.data = action.payload;
+            state.activeModal.data = {
+                ...state.activeModal.data,
+                ...action.payload
+            };
+            console.log(state.activeModal.data);
+        },
+        resetModalData: (state) => {
+            state.activeModal.data = {};
             console.log(state.activeModal.data);
         }
     }
 });
 
-export const { setActiveTableName, setActiveTableData, setTableStates, setTableSorting, setActiveModalName, setModalData } = appSlice.actions;
+export const {
+    setActiveTableName,
+    setActiveTableData,
+    setTableStates,
+    setTableSorting,
+    setActiveModalName,
+    setModalData,
+    resetModalData
+} = appSlice.actions;
+
 export default appSlice.reducer;

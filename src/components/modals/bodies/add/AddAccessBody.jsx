@@ -6,7 +6,7 @@ export default function AddAccessBody() {
     return (
         <>
             <Select name='site' />
-            <Input name='access' />
+            <Input name='access' action='add' />
         </>
     );
 }

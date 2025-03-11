@@ -7,8 +7,7 @@ export default function AddCabinetBody() {
         <>
             <Select name="site" />
             <Select name="location" />
-            <Input name='cabinet' />
-
+            <Input name='cabinet' action='add' />
         </>
     );
 }

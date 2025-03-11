@@ -22,7 +22,6 @@ export default function SideBar({ record }) {
 
     // Handle the edit button click
     const handleEditClick = () => {
-        console.log(record); // Log record for debugging
         setIsBodyOn(false); // Close the body when editing
         dispatch(setActiveModalName('edit')); // Set the active modal to 'edit'
         dispatch(setModalData(record)); // Set the modal data to the current record
@@ -30,7 +29,6 @@ export default function SideBar({ record }) {
 
     // Handle the delete button click
     const handleDeleteClick = () => {
-        console.log(record); // Log record for debugging
         setIsBodyOn(false); // Close the body when deleting
         dispatch(setActiveModalName('delete')); // Set the active modal to 'delete'
         dispatch(setModalData(record)); // Set the modal data to the current record

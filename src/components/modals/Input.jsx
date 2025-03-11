@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalData } from "../../redux/appSlice";
 
-export default function Input({ name }) {
+export default function Input({ name, action }) {
     const dispatch = useDispatch();
-    const [inpValue, setInpValue] = useState("");
     const data = useSelector((state) => state.app.activeModal.data);
+    const [inpValue, setInpValue] = useState("");
+
+    useEffect(() => {
+        if (action === 'edit') {
+            setInpValue(data[`${name}_name`] || '');
+        } else if (action === 'add') {
+            setInpValue('');
+            dispatch(setModalData({ ...data, [`${name}_name`]: '' }));
+        }
+    }, [])
 
     const handleInputChange = (event) => {
         const { value } = event.target;
         setInpValue(value);
-        dispatch(setModalData({ ...data, name: value }));
+        dispatch(setModalData({ ...data, [`${name}_name`]: value }));
     };
 
     return (

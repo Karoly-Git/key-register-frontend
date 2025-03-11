@@ -5,7 +5,7 @@ export default function AddLocationBody() {
     return (
         <>
             <Select name="site" />
-            <Input name='location' />
+            <Input name='location' action='add' />
         </>
     );
 }

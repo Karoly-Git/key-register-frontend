@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveModalName, setModalData, setActiveTableData } from '../../redux/appSlice';
+import { setActiveModalName, resetModalData, setActiveTableData } from '../../redux/appSlice';
 
 import getTable from '../../services/getTable';
 import addRecord from '../../services/addRecord';
@@ -76,8 +76,8 @@ export default function Modal() {
     };
 
     const exitModal = () => {
-        dispatch(setModalData(null));
-        dispatch(setActiveModalName(null));
+        dispatch(resetModalData());
+        dispatch(setActiveModalName(''));
     };
 
     const handleKeyDown = (event) => {
@@ -109,6 +109,7 @@ export default function Modal() {
                 </div>
 
                 <div className='modal-footer'>
+                    <button type='button' className='btn confirm-btn' onClick={() => console.log(data)}>Log modalData</button>
                     <button type='submit' className='btn confirm-btn'>{texts[activeModalName].confirm}</button>
                     <button type='button' className='btn abort-btn' onClick={exitModal}>{texts[activeModalName].abort}</button>
                 </div>

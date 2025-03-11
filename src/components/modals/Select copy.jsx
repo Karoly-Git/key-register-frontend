@@ -9,20 +9,13 @@ export default function Select({ name }) {
     const [data, setData] = useState([]);
     const [selectedId, setSelectedId] = useState("");
 
+    const cabinetId = 1;
+
     useEffect(() => {
         if (name === 'hook') {
             const fetchedData = [3, 1, 4, 2, 5];
             fetchedData.sort((a, b) => a - b);
             setData(fetchedData);
-
-            if (fetchedData.length > 0) {
-                setSelectedId(fetchedData[0]);
-
-                dispatch(setModalData({
-                    [`${name}_id`]: fetchedData[0],
-                    [`${name}_name`]: fetchedData[0]
-                }));
-            }
         } else {
             getTable(name === 'access' ? 'accesses' : `${name}s`)
                 .then((result) => {
@@ -31,24 +24,22 @@ export default function Select({ name }) {
                     const sortedResult = result.sort((a, b) => {
                         const valueA = String(a[`${name}_name`] ?? "").toLowerCase();
                         const valueB = String(b[`${name}_name`] ?? "").toLowerCase();
-                        return valueB.localeCompare(valueA);
+                        return valueA.localeCompare(valueB);
                     });
 
                     setData(sortedResult);
 
-                    if (sortedResult.length > 0) {
-                        setSelectedId(sortedResult[0].id);
-
-                        dispatch(setModalData({
-                            [`${name}_id`]: sortedResult[0].id,
-                            [`${name}_name`]: sortedResult[0][`${name}_name`],
-                        }));
-                    }
+                    dispatch(setModalData({
+                        ...modalData,
+                        ...sortedResult[0]
+                    }));
                 })
+
                 .catch((error) => console.error(`Error fetching ${name}:`, error));
         }
-    }, [name, dispatch]);
+    }, []);
 
+    // Handle select change
     const handleSelectChange = (event) => {
         const { value } = event.target;
         setSelectedId(value);
@@ -56,8 +47,9 @@ export default function Select({ name }) {
         const selectedItem = data.find((item) => String(item.id) === value);
 
         dispatch(setModalData({
-            [`${name}_id`]: value,
-            [`${name}_name`]: selectedItem ? selectedItem[`${name}_name`] : "",
+            ...modalData, // Preserve previous modal data
+            [`${name}_id`]: value, // Update the specific ID
+            [`${name}_name`]: selectedItem ? selectedItem[`${name}_name`] : "", // Ensure we update the name too
         }));
     };
 

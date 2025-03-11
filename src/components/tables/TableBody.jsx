@@ -30,10 +30,14 @@ export default function TableBody({ tableName }) {
         return isAsc ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
     });
 
+    const handleDoubleClick = (record) => {
+        console.log(record);
+    };
+
     return (
         <tbody>
             {sortedData.map((record, recordIndex) => (
-                <tr key={record.id || `record-${recordIndex}`}>
+                <tr key={record.id || `record-${recordIndex}`} onDoubleClick={() => handleDoubleClick(record)}>
                     {objKeys.slice(1).map(objKey => (
                         <td key={objKey}>{record[objKey] ?? "N/A"}</td>
                     ))}
