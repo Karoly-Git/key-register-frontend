@@ -60,9 +60,24 @@ export default function Modal() {
 
         if (data) {
             if (activeModalName === 'add') {
-                await addRecord(activeTable, data); // Ensure record is added first
+                if (activeTable === 'sites') {
+                    await addRecord(activeTable, { name: data.site_name });
+                }
+                if (activeTable === 'locations') {
+                    await addRecord(activeTable, { name: data.location_name, site_id: data.site_id });
+                }
+                if (activeTable === 'cabinets') { // Select site is just for filtering purpos, no required to save the data, site id will be taken automatically
+                    await addRecord(activeTable, { name: data.cabinet_name, location_id: data.location_id });
+                }
+                if (activeTable === 'accesses') {
+                    await addRecord(activeTable, { name: data.access_name, site_id: data.site_id });
+                }
+                if (activeTable === 'keys') {
+                    console.log(15, Number(data.cabinet_id), Number(data.access_id));
+                    await addRecord(activeTable, { hook_number: 15, cabinet_id: Number(data.cabinet_id), access_id: Number(data.access_id) });
+                }
             } else if (activeModalName === 'delete') {
-                await deleteRecordById(activeTable, data.id); // Ensure deletion completes
+                await deleteRecordById(activeTable, data.id);
             }
 
             // Fetch updated table data after modification
@@ -109,7 +124,11 @@ export default function Modal() {
                 </div>
 
                 <div className='modal-footer'>
-                    <button type='button' className='btn confirm-btn' onClick={() => console.log(data)}>Log modalData</button>
+                    <button type='button' className='btn confirm-btn'
+                        onClick={() => {
+                            console.log(data);
+                            console.log(activeTable);
+                        }}>Log modal data</button>
                     <button type='submit' className='btn confirm-btn'>{texts[activeModalName].confirm}</button>
                     <button type='button' className='btn abort-btn' onClick={exitModal}>{texts[activeModalName].abort}</button>
                 </div>

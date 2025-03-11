@@ -5,7 +5,7 @@ import { FaLocationCrosshairs as LocationIcon } from 'react-icons/fa6';
 import { FaRegBuilding as SiteIcon } from 'react-icons/fa';
 
 export const apiUrl = {
-    isLocalServer: false,
+    isLocalServer: true,
     dev: 'http://localhost:8000',
     prod: 'https://transferstation.co.uk'
 };

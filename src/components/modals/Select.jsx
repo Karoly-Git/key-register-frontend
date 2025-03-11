@@ -16,7 +16,7 @@ export default function Select({ name }) {
             setData(fetchedData);
 
             if (fetchedData.length > 0) {
-                setSelectedId(fetchedData[0]);
+                setSelectedId(0);
 
                 dispatch(setModalData({
                     [`${name}_id`]: fetchedData[0],
