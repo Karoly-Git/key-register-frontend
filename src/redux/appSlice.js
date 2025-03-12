@@ -17,7 +17,8 @@ export const appSlice = createSlice({
         activeModal: {
             name: '',
             data: {}
-        }
+        },
+        filterValue: ''
     },
     reducers: {
         setActiveTableName: (state, action) => {
@@ -46,6 +47,9 @@ export const appSlice = createSlice({
         resetModalData: (state) => {
             state.activeModal.data = {};
             console.log(state.activeModal.data);
+        },
+        setFilterValue: (state, action) => {
+            state.filterValue = action.payload;
         }
     }
 });
@@ -57,7 +61,8 @@ export const {
     setTableSorting,
     setActiveModalName,
     setModalData,
-    resetModalData
+    resetModalData,
+    setFilterValue
 } = appSlice.actions;
 
 export default appSlice.reducer;

@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useDispatch } from 'react-redux';
+import { setFilterValue } from "../../redux/appSlice";
 import { setActiveModalName } from '../../redux/appSlice';
 import { BsSearch as SearchIcon, BsPlusLg as PlusIcon } from "react-icons/bs";
 
@@ -19,7 +20,8 @@ export default function SearchBar() {
     };
 
     const handleInputChange = (e) => {
-        console.log(e.target.value);
+        const value = e.target.value.trim().replace(/\s+/g, ' ');
+        dispatch(setFilterValue(value));
     };
 
     return (
