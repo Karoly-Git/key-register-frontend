@@ -46,21 +46,25 @@ export default function Input({ name, action }) {
         if (action === 'edit') {
             setInpValue(value);
             if (name === 'site') {
-                dispatch(setModalData({ ...data, [`${name}_name`]: value }));
+                const normalizedValue = value.trim().replace(/\s+/g, ' ');
+                dispatch(setModalData({ ...data, [`${name}_name`]: normalizedValue }));
             }
             if (name === "location" || name === 'access') {
+                const normalizedValue = value.trim().replace(/\s+/g, ' ');
                 const siteId = await getSiteIdByName(data.site_name);
-                dispatch(setModalData({ ...data, [`${name}_name`]: value, site_id: siteId }));
+                dispatch(setModalData({ ...data, [`${name}_name`]: normalizedValue, site_id: siteId }));
             }
             if (name === 'cabinet') {
+                const normalizedValue = value.trim().replace(/\s+/g, ' ');
                 const locationId = await getLocationIdByName(data.location_name);
-                dispatch(setModalData({ ...data, [`${name}_name`]: value, location_id: locationId }));
+                dispatch(setModalData({ ...data, [`${name}_name`]: normalizedValue, location_id: locationId }));
             }
         }
         if (action === 'add') {
             const { value } = event.target;
             setInpValue(value);
-            dispatch(setModalData({ ...data, [`${name}_name`]: value }));
+            const normalizedValue = value.trim().replace(/\s+/g, ' ');
+            dispatch(setModalData({ ...data, [`${name}_name`]: normalizedValue }));
         }
     };
 
