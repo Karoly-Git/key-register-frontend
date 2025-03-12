@@ -21,10 +21,11 @@
             th {
                 display: flex;
                 align-items: center;
-                width: 100%;
                 text-align: left;
-                padding-left: 0.5rem;
+                padding-left: 5px;
                 user-select: none;
+                border: 1px solid red;
+                width: 110px;
 
                 .icon {
                     position: relative;
@@ -57,15 +58,17 @@
 
             td {
                 //padding: 0.5rem 0;
-                width: 100%;
+                width: 110px;
+                min-width: 110px;
                 display: flex;
-                padding-left: 0.5rem;
+                padding-left: 5px;
             }
 
             .td-edit {
-                width: unset;
+                //width: unset;
                 position: relative;
-                margin-left: -32px;
+                //margin-left: -32px;
+                margin-left: auto;
                 background-color: transparent;
             }
         }
