@@ -52,4 +52,10 @@
   position: relative;
   margin-left: -32px;
   background-color: transparent;
+}
+.table .no-result {
+  text-align: center;
+  padding: 10px;
+  font-style: italic;
+  color: #888;
 }/*# sourceMappingURL=Tables.css.map */

@@ -51,6 +51,9 @@
   margin-right: -2rem;
   cursor: text;
 }
+.search-bar div .filter-off-icon {
+  cursor: pointer;
+}
 .search-bar div input {
   width: 100%;
   padding: 0.5rem 3rem;

@@ -5,15 +5,12 @@ import SideBar from "../bars/SideBar";
 import getTable from "../../services/getTable";
 
 export default function TableBody({ tableName }) {
-    const filterValue = useSelector(state => state.app.filterValue);
-    const [records, setRecords] = useState([]);
-
     const dispatch = useDispatch();
-    const data = useSelector(state => state.app.activeTable.data) || [];
-
-    const [objKeys, setObjKeys] = useState([]);
-
+    const filterValue = useSelector(state => state.app.filterValue);
     const tableState = useSelector(state => state.app.tableStates[tableName]) || {};
+
+    const [records, setRecords] = useState([]);
+    const [objKeys, setObjKeys] = useState([]);
     const { sortBy, isAsc } = tableState;
 
     useEffect(() => {
@@ -43,24 +40,28 @@ export default function TableBody({ tableName }) {
             });
     }, [tableName, filterValue, isAsc, sortBy, dispatch]);
 
-
-
-    //console.log(sortedData);
-
     const handleDoubleClick = (record) => {
         console.log(record);
     };
 
     return (
         <tbody>
-            {records.map((record, recordIndex) => (
-                <tr key={record.id || `record-${recordIndex}`} onDoubleClick={() => handleDoubleClick(record)}>
-                    {objKeys.slice(1).map(objKey => (
-                        <td key={objKey}>{record[objKey] ?? "N/A"}</td>
-                    ))}
-                    <td className="td-edit"><SideBar record={record} /></td>
+            {records.length > 0 ? (
+                records.map((record, recordIndex) => (
+                    <tr key={record.id || `record-${recordIndex}`} onDoubleClick={() => handleDoubleClick(record)}>
+                        {objKeys.slice(1).map(objKey => (
+                            <td key={objKey}>{record[objKey] ?? "N/A"}</td>
+                        ))}
+                        <td className="td-edit"><SideBar record={record} /></td>
+                    </tr>
+                ))
+            ) : (
+                <tr>
+                    <td className="no-result">
+                        No matching records found.
+                    </td>
                 </tr>
-            ))}
+            )}
         </tbody>
     );
 }
