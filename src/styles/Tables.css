@@ -24,7 +24,6 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  border: 1px solid red;
   width: 110px;
 }
 .table thead tr th .icon {
