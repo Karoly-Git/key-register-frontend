@@ -57,7 +57,7 @@ export default function TableBody({ tableName }) {
                     </tr>
                 ))}
 
-            {records.length > 0 && filterValue &&
+            {records.length === 0 && filterValue &&
                 <tr>
                     <td className="no-result">
                         No matching records found.
