@@ -8,6 +8,7 @@ export default function TableBody({ tableName }) {
     const dispatch = useDispatch();
     const filterValue = useSelector(state => state.app.filterValue);
     const tableState = useSelector(state => state.app.tableStates[tableName]) || {};
+    const data = useSelector(state => state.app.activeModal.data);
 
     const [records, setRecords] = useState([]);
     const [objKeys, setObjKeys] = useState([]);
@@ -38,7 +39,7 @@ export default function TableBody({ tableName }) {
 
                 setRecords(sortedData);
             });
-    }, [tableName, filterValue, isAsc, sortBy, dispatch]);
+    }, [tableName, filterValue, isAsc, sortBy, dispatch, data]);
 
     const handleDoubleClick = (record) => {
         console.log(record);
@@ -46,7 +47,7 @@ export default function TableBody({ tableName }) {
 
     return (
         <tbody>
-            {records.length > 0 ? (
+            {records.length > 0 &&
                 records.map((record, recordIndex) => (
                     <tr key={record.id || `record-${recordIndex}`} onDoubleClick={() => handleDoubleClick(record)}>
                         {objKeys.slice(1).map(objKey => (
@@ -54,14 +55,18 @@ export default function TableBody({ tableName }) {
                         ))}
                         <td className="td-edit"><SideBar record={record} /></td>
                     </tr>
-                ))
-            ) : (
+                ))}
+
+            {records.length > 0 && filterValue &&
                 <tr>
                     <td className="no-result">
                         No matching records found.
                     </td>
-                </tr>
-            )}
+                </tr>}
         </tbody>
     );
 }
+
+
+
+
