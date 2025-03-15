@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilterValue } from "../../redux/appSlice";
 import { setActiveModalName } from '../../redux/appSlice';
@@ -8,6 +8,7 @@ import { TbZoomReset as FilterOffIcon } from "react-icons/tb";
 export default function SearchBar() {
     const dispatch = useDispatch();
     const filterValue = useSelector(state => state.app.filterValue);
+    const [inpValue, setInpValue] = useState("");
 
     const inpRef = useRef(null);
 
@@ -26,9 +27,11 @@ export default function SearchBar() {
         dispatch(setActiveModalName('add'));
     };
 
-    const handleInputChange = (e) => {
-        const value = e.target.value.trim().replace(/\s+/g, ' ');
-        dispatch(setFilterValue(value));
+    const handleInputChange = (event) => {
+        const { value } = event.target;
+        setInpValue(value);
+        const normalizedValue = value.trim().replace(/\s+/g, ' ');
+        dispatch(setFilterValue(normalizedValue));
     };
 
     return (
@@ -40,7 +43,7 @@ export default function SearchBar() {
                     <FilterOffIcon className='icon search-icon filter-off-icon' onClick={handleFilterOffIconClick} />
                 )}
 
-                <input value={filterValue} type="text" ref={inpRef} onChange={handleInputChange} />
+                <input value={inpValue} type="text" ref={inpRef} onChange={handleInputChange} />
                 <PlusIcon className='icon add-icon' onClick={handleAddIconClick} />
             </div>
         </div>

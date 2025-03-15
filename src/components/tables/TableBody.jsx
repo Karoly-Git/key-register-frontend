@@ -6,7 +6,7 @@ import getTable from "../../services/getTable";
 
 export default function TableBody({ tableName }) {
     const dispatch = useDispatch();
-    const filterValue = useSelector(state => state.app.filterValue);
+    const filterValue = useSelector(state => state.app.filterValue.toLowerCase());
     const tableState = useSelector(state => state.app.tableStates[tableName]) || {};
     const data = useSelector(state => state.app.activeModal.data);
 
