@@ -7,7 +7,7 @@ export default function TableHead({ tableName, columns }) {
         <thead>
             <tr>
                 {columns.map((colName, labelIndex) => (
-                    <th key={labelIndex}>
+                    <th key={labelIndex} className={`col-${labelIndex}`}>
                         <FilterBar tableName={tableName} colName={colName} />
                     </th>
                 ))}

@@ -50,8 +50,8 @@ export default function TableBody({ tableName }) {
             {records.length > 0 &&
                 records.map((record, recordIndex) => (
                     <tr key={record.id || `record-${recordIndex}`} onDoubleClick={() => handleDoubleClick(record)}>
-                        {objKeys.slice(1).map(objKey => (
-                            <td key={objKey}>{record[objKey] ?? "N/A"}</td>
+                        {objKeys.slice(1).map((objKey, objKeyIndex) => (
+                            <td key={objKey} className={`col-${objKeyIndex}`}>{record[objKey] ?? "N/A"}</td>
                         ))}
                         <td className="td-edit"><SideBar record={record} /></td>
                     </tr>

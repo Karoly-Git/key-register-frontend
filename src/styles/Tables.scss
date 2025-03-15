@@ -80,3 +80,17 @@
         color: #888;
     }
 }
+
+.cabinets-table {
+    .col-2 {
+        display: none;
+    }
+}
+
+.keys-table {
+
+    .col-3,
+    .col-4 {
+        display: none;
+    }
+}
